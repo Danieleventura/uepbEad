@@ -40,16 +40,16 @@ public class Turma {
 	@NotEmpty
 	private String horario;
 	
-	@OneToMany
+	@OneToMany(cascade={ CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.REMOVE })
 	private List<Usuario> alunos;
 	
-	@OneToOne
+	@OneToOne(cascade={ CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.REMOVE })
 	private Usuario professor;
 	
-	@OneToMany
+	@OneToMany(cascade={ CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.REMOVE })
 	private List<Avaliacao> avaliacoes;
 	
-	@OneToMany
+	@OneToMany(cascade={ CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.REMOVE })
 	private List<Conteudo> conteudos;
 	
 	//@OneToOne(cascade={CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})

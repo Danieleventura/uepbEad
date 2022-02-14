@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org"
+	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+	<head>
+		<title>AVA - Perfil</title>
+		<meta charset="utf-8">
+		<link rel="stylesheet" th:href="@{/css/professor.css}"/>
+		<script src="/js/professor.js"></script>
+	</head>
+	
+	<body>
+		<h1>Atualizar Perfil</h1>
+		<form method="post">
+			Nome: <input type="text" value="" name="nome"/>
+			Matricula: <input type="text" value="" name="matricula"/>
+			Curso: <input type="text" value="" name="curso"/>
+			E-mail: <input type="email" value="" name="email"/>
+			Senha: <input type="password" value="" name="senha"/>
+
+			<button type="submit"> Salvar Alterações </button>
+		</form>
+	
+	
+	</body>
+</html>
