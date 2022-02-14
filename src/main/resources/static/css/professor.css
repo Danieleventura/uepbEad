@@ -1,0 +1,253 @@
+
+body
+{
+	font-family: "Trebuchet MS", Helvetica, sans-serif;
+	background: #8299cc;
+	min-width: 600px;
+}
+p
+{
+	font-size: 14px;
+	letter-spacing: 0em;
+	color:  black;
+	text-align: justify;
+	padding: 10px;
+}
+
+ol
+{
+	list-style-type: none;
+	font-size: 18px;
+	padding: 5px;
+	text-align: center;
+	display: inline;
+
+}
+
+ol li
+{
+	padding:  5px;
+}
+
+
+#telaInicial
+{
+	font-family: "Trebuchet MS", Helvetica, sans-serif;
+	background: #8299cc url(../imagens/avatar/background.jpg) top left;
+}
+
+#titulo
+{
+	text-align: right;
+	padding-top: 20px;
+	padding-right: 15px;
+}
+
+select {
+    font-size: .9rem;
+    padding: 2px 5px;
+	border-radius: 5px;
+}
+
+
+#rodape
+{
+	background-color: rgba(255,255,255,0.1);
+	margin: 0 auto;
+	margin-top: 5px;
+	text-align: center;
+	font-size: 14px;
+	letter-spacing: 0.01em;
+	color: #fff;
+	padding:  5px 5px;
+	min-width: 600px;
+	position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+}
+
+#logo
+{
+	padding-left: 15px;
+}
+
+#cabecalho
+{
+	border-radius: 10px;
+	margin: 0 auto;
+	top: 5px;
+	font-size: 15px;
+	text-align: left;
+	width:  98.8%;	
+	background: white;
+	position: fixed;
+	padding-top:  15px;
+	padding-bottom: 15px;
+	letter-spacing: 0.1em;
+	color: black;
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	vertical-align: middle;
+	min-width: 600px;
+}
+
+ul
+{
+	border-radius: 10px;
+	list-style-type: none;
+	margin: 0 auto;
+	padding: 0;
+	top: 113px;
+	font-size: 15px;
+	text-align: center;
+	width: 98.5%;
+	background: black;
+	float: left;
+	position:  fixed;
+}
+
+ul li
+{
+	
+	display: inline;
+	float: left;
+}
+
+ul a
+{
+ display: block;
+ padding: 0px 2em;
+ line-height: 2.2em;
+ text-decoration: none;
+ color: white;
+ background: url(../imagens/divisor.png) no-repeat;
+}
+
+ul .primeiro a
+{
+	background: white;
+	color: red;
+}
+
+ul a:hover
+{
+	color: red;
+	background: #fff;
+}
+
+
+#logout
+{
+	float:  right;
+}
+
+ul #logout a:hover
+{
+	color: #fff;
+	background: red;
+	border-bottom-right-radius: 10px;
+	border-top-right-radius: 10px;
+}
+
+#home #horizontal .home a,
+#tarefas #horizontal .tarefas a,
+#relatorios #horizontal .relatorios a,
+#cadastros #horizontal .cadastros a,
+#noticias #horizontal .noticias a
+{
+	color: #085662;
+	background: #44cade;
+	border-radius: 10px;
+}
+
+placeholder
+{
+	text-align: center;
+}
+
+#container
+{
+	width: 400px;
+	height: 350px;
+	background-color: rgba(255,255,255,0.6);
+	border-radius: 10px;
+	margin: 0 auto;
+	margin-top: 230px;
+	text-align: center;
+	font-size: 20px;
+	letter-spacing: 0.1em;
+	color: #B40404;
+}
+
+#rotina
+{
+	width: 99.5%;
+	background-color: rgba(255,255,255,0.6);
+	border-radius: 10px;
+	margin-top: 160px;
+	padding:  1px;
+	text-align: center;
+	font-size: 20px;
+	letter-spacing: 0.1em;
+	color: #800000;
+}
+
+#container img
+{
+	width: 120px;
+	margin-top: -70px;
+	margin-bottom: 10px;
+}
+
+input, button
+{
+	height: 40px;
+	width: 80%;
+	font-size: 18px;
+	margin-bottom: 10px;
+	background-color: #fff;
+	padding-left: 40px;
+	border: none;
+	background-repeat: no-repeat;
+	background-position: 10px;
+	border-radius: 10px;
+}
+
+input.email
+{
+	background-image: url(../imagens/icone-usuario.png);
+}
+
+input.senha
+{
+	background-image: url(../imagens/icone-cadeado.png);
+}
+
+input.submit, button.submit
+{
+	color: #fff;
+	background: #151515 linear-gradient(to bottom, #2E2E2E, #151515);
+	border: 2px solid #000000;
+	padding: 5px 20px;
+	height: 40px;
+	width: 90%;
+
+
+}
+
+input.submit:hover, button.submit:hover
+{
+	background:  #000000;
+}
+
+#form-row
+{
+	width: 99.5%;
+	background-color: rgba(255,255,255,0.6);
+	text-align: center;
+	font-size: 20px;
+	letter-spacing: 0.1em;
+	color: #800000;
+}
+

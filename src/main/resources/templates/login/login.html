@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org"
+	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+	<head>
+		<title>AVA - Login</title>
+		<meta charset="utf-8">
+		<link rel="stylesheet" type="text/css" href="css/estilo.css">
+		<script src="js/login.js"></script>
+		 <!--Import Google Icon Font-->
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+      <!--Import materialize.css-->
+      <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
+
+      <!--Let browser know website is optimized for mobile-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+	</head>
+
+	<body id="telaInicial">
+		<div id="cabecalho">
+			<div id="logo">
+				<img src="imagens/logotopo.svg" height="70px">
+			</div>
+			<div id="titulo">
+				<strong color="#B40404">Área Restrita<br>
+				Professores | Alunos | Suporte<br>
+				</strong>
+			</div>
+		</div>
+			
+		<div id="container">
+			
+			<img src="imagens/perfil.png">
+			<div>Acesso ao Sistema</div><br>
+			
+			<form  name="formLogin" onsubmit="return validarFormulario()" method="post">
+				<div>
+					<input class="email" type="email" name="email" id="email"
+					placeholder="Digite seu e-mail">
+				</div>
+				<div>
+					<input class="senha" type="password" name="senha" id="senha"
+					placeholder="Digite sua senha">
+				</div>
+
+				<label>Qual Seu Perfil ?:</label>
+				<select name = perfil id= "perfil">
+						<option value="">Selecione...</option>
+						<option value="Professor">Professor</option>
+						<option value="Aluno">Aluno</option>
+						<option value="Suporte">Suporte</option>
+				</select>
+				
+				<div>
+					<br>
+					<button class="submit" type="submit">Login</button>
+				</div>
+				
+				<div>
+					<br>
+					<button class="submit" type="submit" onclick="criarUsuario()">Criar Usuario</button>
+				</div>
+				
+			</form>			
+		</div>
+		<div id="rodape">
+			<strong>TODOS OS DIREITOS RESERVADOS</strong><br>
+			Universidade Estadual da Paraíba - UEPB |
+			Equipe : 10 em Ead
+			<img src="imagens/computer.png">		
+		</div>
+		 <!--JavaScript at end of body for optimized loading-->
+      <script type="text/javascript" src="js/materialize.min.js"></script>
+	</body>
+</html>
