@@ -5,10 +5,15 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.uepb.projetoWeb.domain.dto.ConteudoDTO;
+import com.uepb.projetoWeb.domain.dto.TurmaDTO;
+import com.uepb.projetoWeb.models.Conteudo;
 import com.uepb.projetoWeb.models.Turma;
 import com.uepb.projetoWeb.models.UserAtual;
 import com.uepb.projetoWeb.models.Usuario;
@@ -25,11 +30,6 @@ public class TurmaController {
 	@Autowired
 	private UsuarioService usuarioService;
 	
-	@RequestMapping(value = "/turmas", method = RequestMethod.GET)
-	public String avaliacao() {
-		return "turma/turma";
-	}
-	
 	@RequestMapping(value = "/cadastro/turma", method = RequestMethod.GET)
 	public String cadastro() {
 		return "turma/formTurma";
@@ -40,12 +40,34 @@ public class TurmaController {
 		
 		if(result.hasErrors()) {
 			attributes.addFlashAttribute("mensagem", "Verifique os campos!");
-			return "redirect:/cadastro/conteudo";
+			return "redirect:/cadastro/turma";
 		}
-		Usuario professor = usuarioService.findByUser();
+		Usuario professor = usuarioService.findByUser(); // pegando o usuario logado
 		turma.setProfessor(professor);
 		Turma a = turmaService.create(turma);
-		attributes.addFlashAttribute("mensagem", "Conteudo adicioncado com sucesso!");
+		attributes.addFlashAttribute("mensagem", "Turma adicioncado com sucesso!");
 		return "redirect:/turmas";
+	}
+	
+	@RequestMapping(value = "/turmas", method = RequestMethod.GET)
+	public ModelAndView turmas() {
+		
+		ModelAndView mv = new ModelAndView("turma/turma");
+		Usuario professor = usuarioService.findByUser();
+		Iterable<Turma> turmas = turmaService.findByProfessorId(professor.getId());
+		mv.addObject("turmas", turmas);
+		
+		return mv;
+	}
+	
+	@RequestMapping(value = "/turma/{id}")
+	public ModelAndView detalhesTurmas(@PathVariable("id") int id) {
+		Turma turma = turmaService.findById(id);
+		
+		ModelAndView mv = new ModelAndView("turma/detalheTurma");
+		mv.addObject("turma", turma);
+		
+		return mv;
+		
 	}
 }

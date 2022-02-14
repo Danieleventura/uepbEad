@@ -22,7 +22,7 @@ public class ProfessorController {
 	public Usuario professor;
 	
 	@RequestMapping(value = "/professor/{id}", method = RequestMethod.GET)
-	public String professor(@PathVariable("id") Long id) {
+	public String professor(@PathVariable("id") int id) {
 		Optional<Usuario> p = usuarioService.findById( id);
 		if (p.isPresent()) {
 				professor = p.get();}

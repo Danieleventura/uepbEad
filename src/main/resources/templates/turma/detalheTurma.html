@@ -2,16 +2,16 @@
 <html xmlns:th="http://thymeleaf.org"
 	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 	<head>
-		<title>AVA - Turmas</title>
+		<title>AVA - Professores</title>
 		<meta charset="utf-8">
-		<link rel="stylesheet" type="text/css" href="css/professor.css">
-		<script src="js/turma.js"></script>
+		<link rel="stylesheet" th:href="@{/css/professor.css}"/>
+		<script src="/js/turma.js"></script>
 	</head>
 
 	<body id="telaInicial">
 		<div id="cabecalho">
 			<div id="logo">
-				<img src="imagens/logotopo.svg" height="70px">
+				<img th:src="@{/imagens/logotopo.svg}" height="70px"  />
 			</div>
 			<div id="titulo">
 				<strong color="#B40404">Área Restrita<br>
@@ -20,7 +20,6 @@
 			</div>
 		</div>
 			
-	</div>
 	<ul id="horizontal">
 		<li>
 			   &nbsp;&nbsp; 
@@ -50,23 +49,24 @@
 	</ul>
 
 	<div id="rotina">
-		<table>
-			<thead>
-				<tr>
-					<th>Titulo</th>
-					<th>Horario</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr th:each="turma : ${turmas}">
-					<td><a th:href="${(#mvc.url('TC#detalhesTurmas').arg(0,turma.id)).build()}"><span th:text="${turma.nome}"></span></a></td>
-					<td><span th:text="${turma.horario}"></span></td>
-				</tr>
-			</tbody>
-		</table>
+		<h1>Turma</h1>
+		<div th:each="turma : ${turma}" >
+			<div class="row">
+				<p>Nome: <span th:text="${turma.nome}"></span></p>
+				<p>Horario: <span th:text="${turma.horario}"></span></p>
+			</div>
+		</div>
 		<div>
 			<br>
-			<button class="submit" type="submit" onclick="criarTurma()">Criar Turma</button>
+			<button class="submit" type="submit" onclick="listarTurma()">Lista de Turmas</button>
+		</div>
+		<div>
+			<br>
+			<button class="submit" type="submit" onclick="editarTurma()">Editar Turma</button>
+		</div>
+		<div>
+			<br>
+			<button class="submit" type="submit" onclick="apagarTurma()">Apagar Turma</button>
 		</div>
 	</div>
 
@@ -74,7 +74,7 @@
 			<strong>TODOS OS DIREITOS RESERVADOS</strong><br>
 			Universidade Estadual da Paraíba - UEPB |
 			Equipe : 10 em Ead
-			<img src="imagens/computer.png">		
+			<img th:src="@{/imagens/computer.png}" />		
 		</div>
 	</body>
 </html>
