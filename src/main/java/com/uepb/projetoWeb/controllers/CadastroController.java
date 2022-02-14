@@ -9,16 +9,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.uepb.projetoWeb.models.Professor;
 import com.uepb.projetoWeb.models.Usuario;
-import com.uepb.projetoWeb.service.ProfessorService;
 import com.uepb.projetoWeb.service.UsuarioService;
 
 @Controller
 public class CadastroController {
-
-	@Autowired
-	private ProfessorService professorService;
 	
 	@Autowired
 	private UsuarioService usuarioService;
@@ -35,15 +30,7 @@ public class CadastroController {
 			return "redirect:/cadastro/conteudo";
 		}
 		if (usuario.getTipo().equalsIgnoreCase("professor")) {
-			Professor a= new Professor();
-			a.setCurso(usuario.getCurso());
-			a.setEmail(usuario.getEmail());
-			a.setId(usuario.getId());
-			a.setMatricula(usuario.getMatricula());
-			a.setNome(usuario.getNome());
-			a.setSenha(usuario.getSenha());
-			a.setTipo(usuario.getTipo());
-			Professor c = professorService.create(a);
+			Usuario c = usuarioService.create(usuario);
 		}
 		
 		if (usuario.getTipo().equalsIgnoreCase("aluno")) {

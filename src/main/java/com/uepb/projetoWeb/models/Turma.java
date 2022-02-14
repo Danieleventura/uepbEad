@@ -30,7 +30,7 @@ public class Turma {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+	private int id;
 
 	@Column
 	@NotEmpty
@@ -44,7 +44,7 @@ public class Turma {
 	private List<Usuario> alunos;
 	
 	@OneToOne
-	private Professor professor;
+	private Usuario professor;
 	
 	@OneToMany
 	private List<Avaliacao> avaliacoes;

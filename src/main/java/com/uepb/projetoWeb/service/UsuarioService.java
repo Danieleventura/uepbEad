@@ -8,8 +8,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
+import com.uepb.projetoWeb.domain.dto.UserAtualDTO;
 import com.uepb.projetoWeb.domain.dto.UsuarioDTO;
+import com.uepb.projetoWeb.models.UserAtual;
 import com.uepb.projetoWeb.models.Usuario;
+import com.uepb.projetoWeb.repository.UserAtualRepository;
 import com.uepb.projetoWeb.repository.UsuarioRepository;
 
 @Service
@@ -19,11 +22,14 @@ public class UsuarioService {
 	@Autowired
 	private UsuarioRepository usuarioRepository;
 	
+	@Autowired
+	private UserAtualService userAtualService;
+	
 	public List<UsuarioDTO> findAll(){
 		return usuarioRepository.findAll().stream().map(UsuarioDTO::new).collect(Collectors.toList());
 	}
 	
-	public Optional<Usuario> findById(Long id) {
+	public Optional<Usuario> findById(int id) {
 		return usuarioRepository.findById(id);
 	}
 	
@@ -46,6 +52,17 @@ public class UsuarioService {
 		return null;
 	}
 	
+	public Usuario findByUser() {
+		UserAtual user = userAtualService.findLastUser();
+		Usuario usuarioBD = new Usuario();
+		
+		Optional<Usuario> u = usuarioRepository.findById(user.getId());
+		if (u.isPresent()) {
+			usuarioBD = u.get();
+			}
+		return usuarioBD;
+	}
+	
 
 	public List<UsuarioDTO> findByMatricula(String matricula) {
 		return usuarioRepository.findByMatricula(matricula).stream().map(UsuarioDTO::new).collect(Collectors.toList());
@@ -55,30 +72,30 @@ public class UsuarioService {
 		return usuarioRepository.save(professor);
 	}
 	
-	public Usuario update(Usuario p, Long id) {
+	//public Usuario update(Usuario p, Long id) {
 		
-		Optional<Usuario> optional = findById(id);
-		if (optional.isPresent()) {
-			Usuario usuarioBD = optional.get();
-			usuarioBD.setMatricula(p.getMatricula());
-			usuarioBD.setNome(p.getNome());
-			usuarioBD.setCurso(p.getCurso());
-			usuarioBD.setEmail(p.getEmail());
-			usuarioBD.setSenha(p.getSenha());
-			
-			usuarioRepository.save(usuarioBD);
-			return usuarioBD;
-		}
-		else {
-			throw new RuntimeException("Erro ao atualizar o usuario!");
-		}
-	}
+		//Optional<Usuario> optional = findById(id);
+	//	if (optional.isPresent()) {
+		//	Usuario usuarioBD = optional.get();
+		//	usuarioBD.setMatricula(p.getMatricula());
+		//	usuarioBD.setNome(p.getNome());
+		//	usuarioBD.setCurso(p.getCurso());
+		//	usuarioBD.setEmail(p.getEmail());
+			//usuarioBD.setSenha(p.getSenha());
+		//	
+		//	usuarioRepository.save(usuarioBD);
+	//		return usuarioBD;
+		//}
+	//	else {
+	//		throw new RuntimeException("Erro ao atualizar o usuario!");
+	//	}
+	//}
 	
-	public void delete(Long id) {
-		Optional<Usuario> usuario = findById(id);
-		if(usuario.isPresent()) {
-			usuarioRepository.deleteById(id);
-		}
-	}
+	//public void delete(Long id) {
+		//Optional<Usuario> usuario = findById(id);
+	//	if(usuario.isPresent()) {
+		//	usuarioRepository.deleteById(id);
+	//	}
+	//}
 
 }

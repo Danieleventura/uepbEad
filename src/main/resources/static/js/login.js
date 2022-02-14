@@ -18,20 +18,20 @@
 
         }
         
-        if (valor == "Professor") {
+        //if (valor == "Professor") {
 
-            window.location ="/professor";   
+           // window.location ="/professor";   
             //alert("Dentro"); 
 
-        }if (valor == "Aluno") {
+       // }if (valor == "Aluno") {
 
-            window.location ="/aluno";   
+         //   window.location ="/aluno";   
             //alert("Dentro"); 
 
-        }else{
+      //  }else{
            
-            alert("fora"); 
-        }
+      //      alert("fora"); 
+      //  }
         
     }
     

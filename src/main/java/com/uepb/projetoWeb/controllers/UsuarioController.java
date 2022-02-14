@@ -32,7 +32,7 @@ public class UsuarioController {
 	}
 	
 	@GetMapping("/{id}")
-	public ResponseEntity<Usuario> get(@PathVariable("id") Long id) {
+	public ResponseEntity<Usuario> get(@PathVariable("id") int id) {
 		Optional<Usuario> professor = usuarioService.findById(id);
 		return professor.map(ResponseEntity::ok).orElse(ResponseEntity.notFound().build());
 		
@@ -46,11 +46,11 @@ public class UsuarioController {
 				ResponseEntity.ok(listaProfessores);
 	}
 	
-	@PutMapping("/{id}")
-	public String updateProfessor(@PathVariable("id") Long id, @RequestBody Usuario professor) {
-		Usuario c = usuarioService.update(professor, id);
-		return "Professor atualizado com sucesso: " + c.getId();
-	}
+	//@PutMapping("/{id}")
+	//public String updateProfessor(@PathVariable("id") int id, @RequestBody Usuario professor) {
+	//	Usuario c = usuarioService.update(professor, id);
+	//	return "Professor atualizado com sucesso: " + c.getId();
+	//}
 	
 	@PostMapping()
 	public String createProfessor(@RequestBody Usuario professor) {
@@ -58,10 +58,10 @@ public class UsuarioController {
 		return "Professor salvo com sucesso: " + c.getId();
 	}
 	
-	@DeleteMapping("/{id}")
-	public String deleteProfessor(@PathVariable("id") Long id) {
-		usuarioService.delete(id);
-		return "Professor removido com sucesso!";
-	}
+	//@DeleteMapping("/{id}")
+	//public String deleteProfessor(@PathVariable("id") Long id) {
+	//	usuarioService.delete(id);
+	//	return "Professor removido com sucesso!";
+	//}
 	
 }
