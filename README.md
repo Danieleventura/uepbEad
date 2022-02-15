@@ -1,12 +1,16 @@
-Sistema AVA para cadeira de Educação a Distancia.
+Sistema AVA para cadeira de Educação a Distância.
+Uepb 2021.2
 
-Esta em desenvolvimento
 
-Utilizando Spring boot e Mysql
+Utilizando Spring Boot e Mysql.
 
-Necessario instalar o lombok (vou colocar o jar na pasta do projeto)
 
-Necessario mudar o usuario e senha do mysql na configuraçao 
+Necessario instalar o lombok (jar disponivel nos arquivos)
 
-Vo descrever as rotas aqui também
+Configuração BD:
+Na classe DataConfiguration mudar usuario e senha.
+
+dataSource.setUsername("SeuUsuario");
+dataSource.setPassword("SuaSenha");
+
 
