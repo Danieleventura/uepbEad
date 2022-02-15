@@ -4,6 +4,8 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
@@ -13,11 +15,13 @@ import org.springframework.web.bind.annotation.GetMapping;
 import com.uepb.projetoWeb.domain.dto.ConteudoDTO;
 import com.uepb.projetoWeb.domain.dto.UsuarioDTO;
 import com.uepb.projetoWeb.models.Conteudo;
+import com.uepb.projetoWeb.models.Usuario;
 import com.uepb.projetoWeb.repository.AvaliacaoRepository;
 import com.uepb.projetoWeb.repository.ConteudoRepository;
 
 @Service
 @Component
+@Transactional
 public class ConteudoService {
 
 	@Autowired
@@ -34,4 +38,19 @@ public class ConteudoService {
 	public Conteudo findById(int id) {
 		return conteudoRepository.findById(id);
 	}
+	
+	public void delete(int id) {
+		Conteudo conteudo = findById(id);
+		if (conteudo != null) {
+		conteudoRepository.deleteById(id);}
+	}
+	
+	public Conteudo update(Conteudo p, int id) {
+		
+		Conteudo optional = findById(id);
+		p.setId(optional.getId());
+		conteudoRepository.save(p);
+		return p;
+	}
+
 }

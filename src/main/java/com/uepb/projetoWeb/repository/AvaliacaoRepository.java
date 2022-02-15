@@ -11,6 +11,7 @@ import com.uepb.projetoWeb.models.Avaliacao;
 @Repository
 public interface AvaliacaoRepository extends JpaRepository<Avaliacao, Long> {
 	Avaliacao findById(int id);
+	void deleteById(int id);
 
 }
 

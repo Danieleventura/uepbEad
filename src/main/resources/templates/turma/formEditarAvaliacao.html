@@ -42,9 +42,6 @@
 		<li class="noticias">
 			<a href="professorForuns.html">Fórum</a>
 		</li>
-		<li id="perfil">
-			<a href="/perfil"><strong>Perfil</strong></a>
-		</li>
 		<li id="logout">
 			<a href="login.html"><strong>Logout</strong></a>
 		</li>
@@ -52,31 +49,17 @@
 	</ul>
 
 	<div id="rotina">
-		<h1>Avaliação</h1>
-		<div th:each="avaliacao : ${avaliacao}" >
-			<div class="row">
-				<p>Id: <span th:text="${avaliacao.id}"></span></p>
-				<p>Nome: <span th:text="${avaliacao.nome}"></span></p>
-				<p>Data Inicio: <span th:text="${avaliacao.dataInicio}"></span></p>
-				<p>Data Final: <span th:text="${avaliacao.dataFinal}"></span></p>
-				<p>Descrição: <span th:text="${avaliacao.descricao}"></span></p>
-				<p>Nota: <span th:text="${avaliacao.nota}"></span></p>
-				<p><a th:href="${(#mvc.url('AC#deletarAvaliacao').arg(0, avaliacao.id)).build()}">Deletar</a></p>
-				<p><a href="/avaliacao/editar/">Editar</a></o>
-			</div>
-		</div>
-		<div>
-			<br>
-			<button class="submit" type="submit" onclick="listarAvaliacao()">Lista de Avaliações</button>
-		</div>
-		<div>
-			<br>
-			<button class="submit" type="submit" onclick="editarAvaliacao()">Editar Avaliação</button>
-		</div>
-		<div>
-			<br>
-			<button class="submit" type="submit" onclick="apagarAvaliacao()">Apagar Avaliação</button>
-		</div>
+		<h1>Editar Avaliacao</h1>
+		<form method="post">
+			Id: <input type="number" value="" name="id"/>
+			Nome: <input type="text" value="" name="nome"/>
+			Data Inico: <input type="date" value="" name="dataInicio"/>
+			Data Final: <input type="date" value="" name="dataFinal"/>
+			Descricao: <input type="text" value="" name="descricao"/>
+			Nota: <input type="text" value="" name="nota"/>
+			<th:block th:include="mensagemValidacao"></th:block>
+			<button type="submit"> Salvar Avaliacao </button>
+		</form>
 	</div>
 
 		<div id="rodape">

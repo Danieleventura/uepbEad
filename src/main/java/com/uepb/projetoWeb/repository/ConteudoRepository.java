@@ -12,5 +12,6 @@ import com.uepb.projetoWeb.models.Conteudo;
 @Repository
 public interface ConteudoRepository extends JpaRepository<Conteudo, Long> {
 	Conteudo findById(int id);
+	void deleteById(int id);
 }
 

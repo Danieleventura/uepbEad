@@ -1,5 +1,6 @@
 package com.uepb.projetoWeb.controllers;
 
+import javax.transaction.Transactional;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,9 +14,11 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.uepb.projetoWeb.domain.dto.ConteudoDTO;
 import com.uepb.projetoWeb.models.Conteudo;
+import com.uepb.projetoWeb.models.Usuario;
 import com.uepb.projetoWeb.service.ConteudoService;
 
 @Controller
+@Transactional
 public class ConteudoController {
 	
 	@Autowired
@@ -50,7 +53,7 @@ public class ConteudoController {
 		return mv;
 	}
 	
-	@RequestMapping(value = "/conteudo/{id}")
+	@RequestMapping(value = "/conteudo/{id}", method = RequestMethod.GET )
 	public ModelAndView detalhesConteudo(@PathVariable("id") int id) {
 		Conteudo conteudo = conteudoService.findById(id);
 		
@@ -59,5 +62,28 @@ public class ConteudoController {
 		
 		return mv;
 		
+	}
+	
+	@RequestMapping(value = "/conteudo/apagar")
+	public String deletarConteudo(int id) {
+		
+		conteudoService.delete(id);
+		
+		return "redirect:/conteudo";
+	}
+	
+	@RequestMapping(value = "/conteudo/editar/", method = RequestMethod.POST)
+	public String editarConteudo(Conteudo conteudo) {
+		conteudoService.update(conteudo, conteudo.getId());
+		//return "turma/formEditarConteudo";
+		return "redirect:/conteudo";
+	}
+	
+	@RequestMapping(value = "/conteudo/editar", method = RequestMethod.GET)
+	public String editarConteudo() {
+
+		//conteudoService.update(conteudo, id);
+		
+		return "turma/formEditarConteudo";
 	}
 }

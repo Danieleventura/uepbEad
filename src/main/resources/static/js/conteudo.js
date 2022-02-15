@@ -10,3 +10,11 @@ function salvarConteudo(){
 function listarConteudo(){
 	   window.location ="/conteudo";
 	 }
+
+function apagarConteudo(){
+	   window.location ="/conteudo/{id}/apagar";
+	 }
+
+function editarConteudo(){
+	   window.location ="/conteudo/editar";
+	 }

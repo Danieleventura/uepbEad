@@ -53,23 +53,29 @@
 
 	<div id="rotina">
 		<h1>Conteúdos</h1>
-		<div th:each="conteudo : ${conteudo}" >
-			<div class="row">
-				<p>Nome: <span th:text="${conteudo.nome}"></span></p>
-				<p>Descrição: <span th:text="${conteudo.descricao}"></span></p>
-			</div>
-		</div>
+		<table class ="container">
+			<thead>
+				<tr>
+					<th>Id</th>
+					<th>Nome</th>
+					<th>Descricao</th>
+					<th>Deletar</th>
+					<th>Editar</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="conteudo : ${conteudo}">
+					<td><span th:text="${conteudo.id}"></span></td>
+					<td><a th:href="${(#mvc.url('CC#detalhesConteudo').arg(0, conteudo.id)).build()}"><span th:text="${conteudo.nome}"></span></a></td>
+					<td><span th:text="${conteudo.descricao}"></span></td>
+					<td><a th:href="${(#mvc.url('CC#deletarConteudo').arg(0, conteudo.id)).build()}">Deletar</a></td>
+					<td><a href="/conteudo/editar/">Editar</a></td>
+				</tr>
+			</tbody>
+		</table>
 		<div>
 			<br>
 			<button class="submit" type="submit" onclick="listarConteudo()">Lista de Conteúdo</button>
-		</div>
-		<div>
-			<br>
-			<button class="submit" type="submit" onclick="editarConteudo()">Editar Conteudo</button>
-		</div>
-		<div>
-			<br>
-			<button class="submit" type="submit" onclick="apagarConteudo()">Apagar Conteudo</button>
 		</div>
 	</div>
 

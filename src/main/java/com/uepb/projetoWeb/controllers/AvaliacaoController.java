@@ -1,5 +1,6 @@
 package com.uepb.projetoWeb.controllers;
 
+import javax.transaction.Transactional;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,9 +15,11 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.uepb.projetoWeb.domain.dto.AvaliacaoDTO;
 import com.uepb.projetoWeb.domain.dto.ConteudoDTO;
 import com.uepb.projetoWeb.models.Avaliacao;
+import com.uepb.projetoWeb.models.Conteudo;
 import com.uepb.projetoWeb.service.AvaliacaoService;
 
 @Controller
+@Transactional
 public class AvaliacaoController {
 	
 	@Autowired
@@ -56,5 +59,28 @@ public class AvaliacaoController {
 		mv.addObject("avaliacao", avaliacao);
 		
 		return mv;
+	}	
+
+	@RequestMapping(value = "/avaliacao/apagar")
+	public String deletarAvaliacao(int id) {
+		
+		avaliacaoService.delete(id);
+		
+		return "redirect:/avaliacao";
+	}
+	
+	@RequestMapping(value = "/avaliacao/editar/", method = RequestMethod.POST)
+	public String editarAvaliacao(Avaliacao avaliacao) {
+		avaliacaoService.update(avaliacao, avaliacao.getId());
+		//return "turma/formEditarConteudo";
+		return "redirect:/avaliacao";
+	}
+	
+	@RequestMapping(value = "/avaliacao/editar/", method = RequestMethod.GET)
+	public String editarConteudo() {
+
+		//conteudoService.update(conteudo, id);
+		
+		return "turma/formEditarAvaliacao";
 	}
 }

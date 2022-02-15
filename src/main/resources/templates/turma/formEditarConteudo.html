@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org"
+	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+	<head>
+		<title>AVA - Conteúdo</title>
+		<meta charset="utf-8">
+		<link rel="stylesheet" th:href="@{/css/professor.css}"/>
+		<script src="js/conteudo.js"></script>
+	</head>
+
+	<body id="telaInicial">
+		<div id="cabecalho">
+			<div id="logo">
+				<img th:src="@{/imagens/logotopo.svg}" height="70px"  />
+			</div>
+			<div id="titulo">
+				<strong color="#B40404">Área Restrita<br>
+				Professor<br>
+				</strong>
+			</div>
+		</div>
+
+	<div id="rotina">
+		<h1>Editar Conteúdo</h1>
+		<form method="post">
+			Nome: <input type="text" value="" name="nome"/>
+			Descricao: <input type="text" value="" name="descricao"/>
+			Id Conteudo: <input type="number" value="" name="id"/>
+			<th:block th:include="mensagemValidacao"></th:block>
+			<div>
+				<br>
+				<button class="submit" type="submit"> Salvar Conteúdo </button>
+			</div>
+		</form>
+	</div>
+
+		<div id="rodape">
+			<strong>TODOS OS DIREITOS RESERVADOS</strong><br>
+			Universidade Estadual da Paraíba - UEPB |
+			Equipe : 10 em Ead
+			<img th:src="@{/imagens/computer.png}">		
+		</div>
+	</body>
+</html>
