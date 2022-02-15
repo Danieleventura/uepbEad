@@ -12,8 +12,10 @@ import com.uepb.projetoWeb.models.Usuario;
 @Repository
 public interface TurmaRepository extends JpaRepository<Turma, Long> {
 
-	List<Turma> findByProfessorId(int id);
-
 	Turma findById(int id);
+
+	void deleteById(int id);
+
+	List<Turma> findByIdProfessor(int id);
 }
 

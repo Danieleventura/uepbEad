@@ -12,11 +12,16 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.uepb.projetoWeb.domain.dto.AvaliacaoDTO;
 import com.uepb.projetoWeb.domain.dto.ConteudoDTO;
 import com.uepb.projetoWeb.models.Conteudo;
+import com.uepb.projetoWeb.models.ConteudoAtual;
 import com.uepb.projetoWeb.models.Turma;
+import com.uepb.projetoWeb.models.TurmaAtual;
 import com.uepb.projetoWeb.models.Usuario;
+import com.uepb.projetoWeb.service.ConteudoAtualService;
 import com.uepb.projetoWeb.service.ConteudoService;
+import com.uepb.projetoWeb.service.TurmaAtualService;
 import com.uepb.projetoWeb.service.TurmaService;
 
 @Controller
@@ -27,6 +32,8 @@ public class ConteudoController {
 	private ConteudoService conteudoService;
 	@Autowired
 	private TurmaService turmaService;
+	@Autowired
+	private ConteudoAtualService conteudoAtualService;
 	
 	@RequestMapping(value = "/cadastro/conteudo", method = RequestMethod.GET)
 	public String conteudo() {
@@ -41,7 +48,7 @@ public class ConteudoController {
 			return "redirect:/cadastro/conteudo";
 		}
 		Turma turma = turmaService.findByUser();  // pegando turma para alocar no conteudo
-		conteudo.setTurma(turma);
+		conteudo.setIdTurma(turma.getId());
 		Conteudo a = conteudoService.create(conteudo);
 		attributes.addFlashAttribute("mensagem", "Conteudo adicioncado com sucesso!");
 		
@@ -52,7 +59,8 @@ public class ConteudoController {
 	public ModelAndView conteudos() {
 		
 		ModelAndView mv = new ModelAndView("turma/conteudo");
-		Iterable<ConteudoDTO> conteudos = conteudoService.findAll();
+		Turma turma = turmaService.findByUser();
+		Iterable<ConteudoDTO> conteudos = conteudoService.findByTurma(turma.getId());
 		mv.addObject("conteudos", conteudos);
 		
 		return mv;
@@ -60,6 +68,9 @@ public class ConteudoController {
 	
 	@RequestMapping(value = "/conteudo/{id}", method = RequestMethod.GET )
 	public ModelAndView detalhesConteudo(@PathVariable("id") int id) {
+		ConteudoAtual conteudoAtual = new ConteudoAtual();
+		conteudoAtual.setId(id);
+		ConteudoAtual user = conteudoAtualService.create(conteudoAtual);
 		Conteudo conteudo = conteudoService.findById(id);
 		
 		ModelAndView mv = new ModelAndView("turma/detalheConteudo");
@@ -79,15 +90,15 @@ public class ConteudoController {
 	
 	@RequestMapping(value = "/conteudo/editar/", method = RequestMethod.POST)
 	public String editarConteudo(Conteudo conteudo) {
-		conteudoService.update(conteudo, conteudo.getId());
-		//return "turma/formEditarConteudo";
+		Conteudo c = conteudoService.findByLasConteudo();
+		conteudo.setIdTurma(c.getIdTurma());
+		conteudo.setId(c.getId());
+		conteudoService.update(conteudo, c.getId());
 		return "redirect:/conteudo";
 	}
 	
 	@RequestMapping(value = "/conteudo/editar", method = RequestMethod.GET)
 	public String editarConteudo() {
-
-		//conteudoService.update(conteudo, id);
 		
 		return "turma/formEditarConteudo";
 	}

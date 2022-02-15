@@ -15,18 +15,12 @@ public class TurmaDTO {
 	private int id;
 	private String nome;
 	private String horario;
-	private Usuario professor;
-	private List<Usuario> aluno;
-	private List<Conteudo> conteudo;
-	private List<Avaliacao> avaliacao;
+	private int idProfessor;
 	
 	public TurmaDTO(Turma p) {
 		this.id = p.getId();
 		this.nome = p.getNome();
 		this.horario = p.getHorario();
-		this.professor = p.getProfessor();
-		this.aluno = p.getAlunos();
-		this.avaliacao = p.getAvaliacoes();
-		this.conteudo = p.getConteudos();
+		this.idProfessor = p.getIdProfessor();
 	}
 }

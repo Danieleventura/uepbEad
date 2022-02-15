@@ -15,8 +15,11 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.uepb.projetoWeb.domain.dto.AvaliacaoDTO;
 import com.uepb.projetoWeb.domain.dto.ConteudoDTO;
 import com.uepb.projetoWeb.models.Avaliacao;
+import com.uepb.projetoWeb.models.AvaliacaoAtual;
 import com.uepb.projetoWeb.models.Conteudo;
+import com.uepb.projetoWeb.models.ConteudoAtual;
 import com.uepb.projetoWeb.models.Turma;
+import com.uepb.projetoWeb.service.AvaliacaoAtualService;
 import com.uepb.projetoWeb.service.AvaliacaoService;
 import com.uepb.projetoWeb.service.TurmaService;
 
@@ -30,6 +33,8 @@ public class AvaliacaoController {
 	private AvaliacaoService avaliacaoService;
 	@Autowired
 	private TurmaService turmaService;
+	@Autowired
+	private AvaliacaoAtualService avaliacaoAtualService;
 	
 	@RequestMapping(value = "/cadastro/avaliacao", method = RequestMethod.GET)
 	public String formAvaliacao() {
@@ -64,6 +69,9 @@ public class AvaliacaoController {
 	public ModelAndView detalhesAvaliacao(@PathVariable("id") int id) {
 		
 		ModelAndView mv = new ModelAndView("turma/detalheAvaliacao");
+		AvaliacaoAtual avaliacaoAtual = new AvaliacaoAtual();
+		avaliacaoAtual.setId(id);
+		AvaliacaoAtual user = avaliacaoAtualService.create(avaliacaoAtual);
 		Avaliacao avaliacao = avaliacaoService.findById(id);
 		mv.addObject("avaliacao", avaliacao);
 		
@@ -80,6 +88,9 @@ public class AvaliacaoController {
 	
 	@RequestMapping(value = "/avaliacao/editar/", method = RequestMethod.POST)
 	public String editarAvaliacao(Avaliacao avaliacao) {
+		Avaliacao c = avaliacaoService.findByLasAvaliacao();
+		avaliacao.setIdTurma(c.getIdTurma());
+		avaliacao.setId(c.getId());
 		avaliacaoService.update(avaliacao, avaliacao.getId());
 		//return "turma/formEditarConteudo";
 		return "redirect:/avaliacao";

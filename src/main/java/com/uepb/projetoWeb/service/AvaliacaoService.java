@@ -14,7 +14,9 @@ import com.uepb.projetoWeb.domain.dto.AvaliacaoDTO;
 import com.uepb.projetoWeb.domain.dto.ConteudoDTO;
 import com.uepb.projetoWeb.domain.dto.UsuarioDTO;
 import com.uepb.projetoWeb.models.Avaliacao;
+import com.uepb.projetoWeb.models.AvaliacaoAtual;
 import com.uepb.projetoWeb.models.Conteudo;
+import com.uepb.projetoWeb.models.ConteudoAtual;
 import com.uepb.projetoWeb.models.Turma;
 import com.uepb.projetoWeb.repository.AvaliacaoRepository;
 
@@ -25,6 +27,8 @@ public class AvaliacaoService {
 
 	@Autowired
 	private AvaliacaoRepository avaliacaoRepository;
+	@Autowired
+	private AvaliacaoAtualService avaliacaoAtualService;
 	
 	public List<AvaliacaoDTO> findByTurma(int idTurma) {
 		List<AvaliacaoDTO> avaliacao = new ArrayList<AvaliacaoDTO>();
@@ -63,6 +67,17 @@ public class AvaliacaoService {
 		p.setId(optional.getId());
 		avaliacaoRepository.save(p);
 		return p;
+	}
+	
+	public Avaliacao findByLasAvaliacao() {
+		AvaliacaoAtual user = avaliacaoAtualService.findLastUser();
+		Avaliacao avaliacaoBD = new Avaliacao();
+		
+		Avaliacao u = avaliacaoRepository.findById(user.getId());
+		if (u != null) {
+			avaliacaoBD = u;
+			}
+		return avaliacaoBD;
 	}
 	
 }

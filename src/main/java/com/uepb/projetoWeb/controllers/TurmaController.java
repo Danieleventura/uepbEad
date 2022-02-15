@@ -1,5 +1,6 @@
 package com.uepb.projetoWeb.controllers;
 
+import javax.transaction.Transactional;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +26,7 @@ import com.uepb.projetoWeb.service.UserAtualService;
 import com.uepb.projetoWeb.service.UsuarioService;
 
 @Controller
+@Transactional
 public class TurmaController {
 	
 	@Autowired
@@ -47,7 +49,7 @@ public class TurmaController {
 			return "redirect:/cadastro/turma";
 		}
 		Usuario professor = usuarioService.findByUser(); // pegando o usuario logado
-		turma.setProfessor(professor);
+		turma.setIdProfessor(professor.getId());
 		Turma a = turmaService.create(turma);
 		attributes.addFlashAttribute("mensagem", "Turma adicioncado com sucesso!");
 		return "redirect:/turmas";
@@ -58,7 +60,7 @@ public class TurmaController {
 		
 		ModelAndView mv = new ModelAndView("turma/turma");
 		Usuario professor = usuarioService.findByUser();
-		Iterable<Turma> turmas = turmaService.findByProfessorId(professor.getId());
+		Iterable<Turma> turmas = turmaService.findByIdProfessor(professor.getId());
 		mv.addObject("turmas", turmas);
 		
 		return mv;
@@ -74,6 +76,28 @@ public class TurmaController {
 		mv.addObject("turma", turma);
 		
 		return mv;
+	}
+	
+	@RequestMapping(value = "/turma/apagar")
+	public String deletarTurma(int id) {
 		
+		turmaService.delete(id);
+		
+		return "redirect:/turmas";
+	}
+	
+	@RequestMapping(value = "/turma/editar/", method = RequestMethod.POST)
+	public String editarTurma(Turma turma) {
+		Turma c = turmaService.findByUser();
+		turma.setIdProfessor(c.getIdProfessor());
+		turma.setId(c.getId());
+		turmaService.update(turma, c.getId());
+		return "redirect:/turmas";
+	}
+	
+	@RequestMapping(value = "/turma/editar", method = RequestMethod.GET)
+	public String editarTurma() {
+		
+		return "turma/formEditarTurma";
 	}
 }

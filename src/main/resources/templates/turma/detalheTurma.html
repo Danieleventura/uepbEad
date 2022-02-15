@@ -51,6 +51,8 @@
 			<div class="row">
 				<p>Nome: <span th:text="${turma.nome}"></span></p>
 				<p>Horario: <span th:text="${turma.horario}"></span></p>
+				<p><a th:href="${(#mvc.url('TC#deletarTurma').arg(0, turma.id)).build()}">Deletar</a></p>
+				<p><a href="/turma/editar/">Editar</a></o>
 			</div>
 		</div>
 		<div>

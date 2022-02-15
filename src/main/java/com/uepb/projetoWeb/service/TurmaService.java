@@ -4,12 +4,16 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import com.uepb.projetoWeb.domain.dto.ConteudoDTO;
 import com.uepb.projetoWeb.domain.dto.TurmaDTO;
+import com.uepb.projetoWeb.models.Avaliacao;
+import com.uepb.projetoWeb.models.Conteudo;
 import com.uepb.projetoWeb.models.Turma;
 import com.uepb.projetoWeb.models.TurmaAtual;
 import com.uepb.projetoWeb.models.UserAtual;
@@ -20,6 +24,7 @@ import com.uepb.projetoWeb.repository.TurmaRepository;
 
 @Service
 @Component
+@Transactional
 public class TurmaService {
 
 	@Autowired
@@ -35,8 +40,8 @@ public class TurmaService {
 		return turmaRepository.findAll().stream().map(TurmaDTO::new).collect(Collectors.toList());
 	}
 	
-	public List<Turma> findByProfessorId(int id) {
-		return turmaRepository.findByProfessorId(id);
+	public List<Turma> findByIdProfessor(int id) {
+		return turmaRepository.findByIdProfessor(id);
 	}
 
 	public Turma findById(int id) {
@@ -52,6 +57,20 @@ public class TurmaService {
 			turmaBD = u;
 			}
 		return turmaBD;
+	}
+
+	public void delete(int id) {
+		Turma turma = findById(id);
+		if (turma != null) {
+			turmaRepository.deleteById(id);}
+	}
+	
+	public Turma update(Turma p, int id) {
+		
+		Turma optional = findById(id);
+		p.setId(optional.getId());
+		turmaRepository.save(p);
+		return p;
 	}
 	
 }

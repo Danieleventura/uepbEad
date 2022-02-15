@@ -40,17 +40,10 @@ public class Turma {
 	@NotEmpty
 	private String horario;
 	
-	@OneToMany(cascade={ CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.REMOVE })
-	private List<Usuario> alunos;
 	
-	@OneToOne(cascade={ CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.REMOVE })
-	private Usuario professor;
-	
-	@OneToMany(cascade={ CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.REMOVE })
-	private List<Avaliacao> avaliacoes;
-	
-	@OneToMany(cascade={ CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.REMOVE })
-	private List<Conteudo> conteudos;
+	@Column
+	private int idProfessor;
+
 	
 	//@OneToOne(cascade={CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
    // @JoinColumn(name = "fk_professor_id", foreignKey = @ForeignKey(name = "fk_professor"), referencedColumnName = "id")
