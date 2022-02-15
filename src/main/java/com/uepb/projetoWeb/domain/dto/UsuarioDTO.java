@@ -1,8 +1,5 @@
 package com.uepb.projetoWeb.domain.dto;
 
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
-
 import com.uepb.projetoWeb.models.Usuario;
 
 import lombok.Data;

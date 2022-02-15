@@ -1,11 +1,6 @@
 package com.uepb.projetoWeb.domain.dto;
 
-import java.util.List;
-
-import com.uepb.projetoWeb.models.Avaliacao;
-import com.uepb.projetoWeb.models.Conteudo;
 import com.uepb.projetoWeb.models.Turma;
-import com.uepb.projetoWeb.models.Usuario;
 
 import lombok.Data;
 

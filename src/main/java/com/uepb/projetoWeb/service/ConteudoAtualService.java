@@ -9,11 +9,8 @@ import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import com.uepb.projetoWeb.domain.dto.ConteudoAtualDTO;
-import com.uepb.projetoWeb.domain.dto.UserAtualDTO;
 import com.uepb.projetoWeb.models.ConteudoAtual;
-import com.uepb.projetoWeb.models.UserAtual;
 import com.uepb.projetoWeb.repository.ConteudoAtualRepository;
-import com.uepb.projetoWeb.repository.UserAtualRepository;
 
 @Service
 @Component

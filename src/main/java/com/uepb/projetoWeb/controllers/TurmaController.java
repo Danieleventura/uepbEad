@@ -12,17 +12,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.uepb.projetoWeb.domain.dto.ConteudoDTO;
-import com.uepb.projetoWeb.domain.dto.TurmaDTO;
-import com.uepb.projetoWeb.models.Conteudo;
 import com.uepb.projetoWeb.models.Turma;
 import com.uepb.projetoWeb.models.TurmaAtual;
-import com.uepb.projetoWeb.models.UserAtual;
 import com.uepb.projetoWeb.models.Usuario;
-import com.uepb.projetoWeb.repository.UsuarioRepository;
 import com.uepb.projetoWeb.service.TurmaAtualService;
 import com.uepb.projetoWeb.service.TurmaService;
-import com.uepb.projetoWeb.service.UserAtualService;
 import com.uepb.projetoWeb.service.UsuarioService;
 
 @Controller

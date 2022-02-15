@@ -2,27 +2,17 @@ package com.uepb.projetoWeb.service;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.GetMapping;
 
-import com.uepb.projetoWeb.domain.dto.AvaliacaoDTO;
 import com.uepb.projetoWeb.domain.dto.ConteudoDTO;
-import com.uepb.projetoWeb.domain.dto.UsuarioDTO;
 import com.uepb.projetoWeb.models.Conteudo;
 import com.uepb.projetoWeb.models.ConteudoAtual;
-import com.uepb.projetoWeb.models.Turma;
-import com.uepb.projetoWeb.models.TurmaAtual;
-import com.uepb.projetoWeb.models.Usuario;
-import com.uepb.projetoWeb.repository.AvaliacaoRepository;
-import com.uepb.projetoWeb.repository.ConteudoAtualRepository;
 import com.uepb.projetoWeb.repository.ConteudoRepository;
 
 @Service

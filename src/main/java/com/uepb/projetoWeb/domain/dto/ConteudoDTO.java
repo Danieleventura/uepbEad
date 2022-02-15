@@ -1,8 +1,6 @@
 package com.uepb.projetoWeb.domain.dto;
 
 import com.uepb.projetoWeb.models.Conteudo;
-import com.uepb.projetoWeb.models.Turma;
-import com.uepb.projetoWeb.models.Usuario;
 
 public class ConteudoDTO {
 

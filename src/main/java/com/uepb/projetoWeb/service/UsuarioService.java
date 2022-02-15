@@ -10,11 +10,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
-import com.uepb.projetoWeb.domain.dto.UserAtualDTO;
 import com.uepb.projetoWeb.domain.dto.UsuarioDTO;
 import com.uepb.projetoWeb.models.UserAtual;
 import com.uepb.projetoWeb.models.Usuario;
-import com.uepb.projetoWeb.repository.UserAtualRepository;
 import com.uepb.projetoWeb.repository.UsuarioRepository;
 
 @Service

@@ -1,7 +1,6 @@
 package com.uepb.projetoWeb.domain.dto;
 
 import com.uepb.projetoWeb.models.ConteudoAtual;
-import com.uepb.projetoWeb.models.UserAtual;
 
 import lombok.Data;
 
@@ -10,7 +9,6 @@ public class ConteudoAtualDTO {
 	
 	private int id;
 	private int codigo;
-	
 	
 	public ConteudoAtualDTO(ConteudoAtual p) {
 		this.id = p.getId();

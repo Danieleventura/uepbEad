@@ -10,7 +10,6 @@ public class TurmaAtualDTO {
 	private int id;
 	private int codigo;
 	
-	
 	public TurmaAtualDTO(TurmaAtual p) {
 		this.id = p.getId();
 		this.codigo = p.getCodigo();

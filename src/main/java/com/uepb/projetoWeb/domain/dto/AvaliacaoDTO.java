@@ -1,7 +1,6 @@
 package com.uepb.projetoWeb.domain.dto;
 
 import com.uepb.projetoWeb.models.Avaliacao;
-import com.uepb.projetoWeb.models.Turma;
 
 public class AvaliacaoDTO {
 

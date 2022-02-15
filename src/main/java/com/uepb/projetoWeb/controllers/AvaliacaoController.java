@@ -13,17 +13,12 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.uepb.projetoWeb.domain.dto.AvaliacaoDTO;
-import com.uepb.projetoWeb.domain.dto.ConteudoDTO;
 import com.uepb.projetoWeb.models.Avaliacao;
 import com.uepb.projetoWeb.models.AvaliacaoAtual;
-import com.uepb.projetoWeb.models.Conteudo;
-import com.uepb.projetoWeb.models.ConteudoAtual;
 import com.uepb.projetoWeb.models.Turma;
 import com.uepb.projetoWeb.service.AvaliacaoAtualService;
 import com.uepb.projetoWeb.service.AvaliacaoService;
 import com.uepb.projetoWeb.service.TurmaService;
-
-import antlr.collections.List;
 
 @Controller
 @Transactional
