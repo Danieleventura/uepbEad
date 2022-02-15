@@ -43,6 +43,6 @@ public class Avaliacao {
 	@NotEmpty
 	private String nota;
 
-	@ManyToOne
-	private Turma turma;
+	@Column
+	private int idTurma;
 }

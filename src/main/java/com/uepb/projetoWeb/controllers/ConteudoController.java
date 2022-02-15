@@ -14,8 +14,10 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.uepb.projetoWeb.domain.dto.ConteudoDTO;
 import com.uepb.projetoWeb.models.Conteudo;
+import com.uepb.projetoWeb.models.Turma;
 import com.uepb.projetoWeb.models.Usuario;
 import com.uepb.projetoWeb.service.ConteudoService;
+import com.uepb.projetoWeb.service.TurmaService;
 
 @Controller
 @Transactional
@@ -23,6 +25,8 @@ public class ConteudoController {
 	
 	@Autowired
 	private ConteudoService conteudoService;
+	@Autowired
+	private TurmaService turmaService;
 	
 	@RequestMapping(value = "/cadastro/conteudo", method = RequestMethod.GET)
 	public String conteudo() {
@@ -36,7 +40,8 @@ public class ConteudoController {
 			attributes.addFlashAttribute("mensagem", "Verifique os campos!");
 			return "redirect:/cadastro/conteudo";
 		}
-		
+		Turma turma = turmaService.findByUser();  // pegando turma para alocar no conteudo
+		conteudo.setTurma(turma);
 		Conteudo a = conteudoService.create(conteudo);
 		attributes.addFlashAttribute("mensagem", "Conteudo adicioncado com sucesso!");
 		

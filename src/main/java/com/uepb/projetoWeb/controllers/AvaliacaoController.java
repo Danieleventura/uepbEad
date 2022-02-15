@@ -16,7 +16,11 @@ import com.uepb.projetoWeb.domain.dto.AvaliacaoDTO;
 import com.uepb.projetoWeb.domain.dto.ConteudoDTO;
 import com.uepb.projetoWeb.models.Avaliacao;
 import com.uepb.projetoWeb.models.Conteudo;
+import com.uepb.projetoWeb.models.Turma;
 import com.uepb.projetoWeb.service.AvaliacaoService;
+import com.uepb.projetoWeb.service.TurmaService;
+
+import antlr.collections.List;
 
 @Controller
 @Transactional
@@ -24,6 +28,8 @@ public class AvaliacaoController {
 	
 	@Autowired
 	private AvaliacaoService avaliacaoService;
+	@Autowired
+	private TurmaService turmaService;
 	
 	@RequestMapping(value = "/cadastro/avaliacao", method = RequestMethod.GET)
 	public String formAvaliacao() {
@@ -36,6 +42,8 @@ public class AvaliacaoController {
 			attributes.addFlashAttribute("mensagem", "Verifique os campos!");
 			return "redirect:/cadastro/conteudo";
 		}
+		Turma turma = turmaService.findByUser();  // pegando turma para alocar no conteudo
+		avaliacao.setIdTurma(turma.getId());
 		Avaliacao a = avaliacaoService.create(avaliacao);
 		attributes.addFlashAttribute("mensagem", "Verifique os campos!");
 		return "redirect:/avaliacao";
@@ -45,7 +53,8 @@ public class AvaliacaoController {
 	public ModelAndView avaliacao() {
 		
 		ModelAndView mv = new ModelAndView("turma/avaliacao");
-		Iterable<AvaliacaoDTO> avaliacoes = avaliacaoService.findAll();
+		Turma turma = turmaService.findByUser();
+		Iterable<AvaliacaoDTO> avaliacoes = avaliacaoService.findByTurma(turma.getId());
 		mv.addObject("avaliacoes", avaliacoes);
 		
 		return mv;

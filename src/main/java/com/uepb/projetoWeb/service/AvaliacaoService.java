@@ -1,5 +1,6 @@
 package com.uepb.projetoWeb.service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -11,8 +12,10 @@ import org.springframework.stereotype.Service;
 
 import com.uepb.projetoWeb.domain.dto.AvaliacaoDTO;
 import com.uepb.projetoWeb.domain.dto.ConteudoDTO;
+import com.uepb.projetoWeb.domain.dto.UsuarioDTO;
 import com.uepb.projetoWeb.models.Avaliacao;
 import com.uepb.projetoWeb.models.Conteudo;
+import com.uepb.projetoWeb.models.Turma;
 import com.uepb.projetoWeb.repository.AvaliacaoRepository;
 
 @Service
@@ -22,6 +25,19 @@ public class AvaliacaoService {
 
 	@Autowired
 	private AvaliacaoRepository avaliacaoRepository;
+	
+	public List<AvaliacaoDTO> findByTurma(int idTurma) {
+		List<AvaliacaoDTO> avaliacao = new ArrayList<AvaliacaoDTO>();
+		List<AvaliacaoDTO> aux = new ArrayList<AvaliacaoDTO>();
+		aux = avaliacaoRepository.findAll().stream().map(AvaliacaoDTO::new).collect(Collectors.toList());
+		for (int i=0; i< aux.size(); i++) {
+			if (aux.get(i).idTurma == idTurma) {
+				avaliacao.add(aux.get(i));
+			}
+		}
+		return avaliacao;
+		//return avaliacaoRepository.findByIdTurma(idTurma).stream().map(AvaliacaoDTO::new).collect(Collectors.toList());
+	}
 	
 	public Avaliacao create(Avaliacao avaliacao) {
 		return avaliacaoRepository.save(avaliacao);
@@ -48,4 +64,5 @@ public class AvaliacaoService {
 		avaliacaoRepository.save(p);
 		return p;
 	}
+	
 }
