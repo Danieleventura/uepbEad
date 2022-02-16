@@ -25,11 +25,9 @@ public class Turma {
 	private int id;
 
 	@Column
-	@NotEmpty
 	private String nome;
 	
 	@Column
-	@NotEmpty
 	private String horario;
 	
 	

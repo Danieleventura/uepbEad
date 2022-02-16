@@ -21,6 +21,11 @@ ol
 	padding: 5px;
 	text-align: center;
 	display: inline;
+	
+	display: flex;
+    flex-direction:row;
+    justify-content:center;
+    align-items: flex-start;
 
 }
 
@@ -222,6 +227,26 @@ placeholder
 	margin-bottom: 15px;
 }
 
+#titulo{
+	display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items:center;
+}
+
+#link a{
+	margin-left: 10px;
+}
+
+#link{
+	margin-left: 40px;
+}
+#informacao{
+	display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items:center;
+}
 
 .container-turma .turmas button{
 	height: 40px;

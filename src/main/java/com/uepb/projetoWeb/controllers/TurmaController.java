@@ -36,16 +36,10 @@ public class TurmaController {
 	}
 	
 	@RequestMapping(value = "/cadastro/turma", method = RequestMethod.POST)
-	public String cadastro(@Valid Turma turma, BindingResult result, RedirectAttributes attributes) {
-		
-		if(result.hasErrors()) {
-			attributes.addFlashAttribute("mensagem", "Verifique os campos!");
-			return "redirect:/cadastro/turma";
-		}
+	public String cadastro(Turma turma) {
 		Usuario professor = usuarioService.findByUser(); // pegando o usuario logado
 		turma.setIdProfessor(professor.getId());
 		Turma a = turmaService.create(turma);
-		attributes.addFlashAttribute("mensagem", "Turma adicioncado com sucesso!");
 		return "redirect:/turmas";
 	}
 	
@@ -73,9 +67,9 @@ public class TurmaController {
 	}
 	
 	@RequestMapping(value = "/turma/apagar")
-	public String deletarTurma(int id) {
-		
-		turmaService.delete(id);
+	public String deletarTurma() {
+		Turma turma = turmaService.findByUser();
+		turmaService.delete(turma.getId());
 		
 		return "redirect:/turmas";
 	}
