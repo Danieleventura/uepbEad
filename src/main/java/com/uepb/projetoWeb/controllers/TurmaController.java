@@ -84,8 +84,11 @@ public class TurmaController {
 	}
 	
 	@RequestMapping(value = "/turma/editar", method = RequestMethod.GET)
-	public String editarTurma() {
+	public ModelAndView editarTurma() {
+		Turma turma = turmaService.findByUser();
+		ModelAndView mv = new ModelAndView("turma/formEditarTurma");
+		mv.addObject("turma", turma);
 		
-		return "turma/formEditarTurma";
+		return mv;
 	}
 }
