@@ -5,3 +5,7 @@ function editarPerfil(){
 function apagarPerfil(){
 	   window.location ="/perfil/apagar";
 	 }
+
+function cancelarPerfil(){
+		window.location ="/perfil";
+	  }

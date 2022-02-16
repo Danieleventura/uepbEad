@@ -57,9 +57,11 @@ public class ProfessorController {
 	}
 
 	@RequestMapping(value = "/perfil/editar", method = RequestMethod.GET)
-	public String editarPerfil() {
-		
-		return "professor/formPerfil";
+	public ModelAndView editarPerfil() {
+		ModelAndView mv = new ModelAndView("professor/formPerfil");
+		Usuario professor = usuarioService.findByUser();
+		mv.addObject("professor", professor);
+		return mv;
 	}
 	
 	@RequestMapping(value = "/perfil/editar", method = RequestMethod.POST)

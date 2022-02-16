@@ -216,7 +216,7 @@ placeholder
     justify-content: center;
     align-items:flex-start;
 	width: 100%;
-	margin-left: 40px;
+	margin-left: 10px;
 	
 }
 
@@ -255,7 +255,10 @@ placeholder
     transition: .3s ease all; /*delay*/
 }
 
-
+.dados input{
+    margin-left: 20px;
+    margin-top: 20px;
+}
 .ladoDireito .dados span{
 	display: flex;
     flex-direction: row;
@@ -299,17 +302,25 @@ placeholder
 .ladoDireito .dados .comtainer-form .botoes{
 	display:flex;
     flex-direction: row;
+    justify-content: flex-start;
+    align-items:center;
+    margin-left:200px;
+	width: 100%;
+    margin-top: 20px;
+	
+}
+
+.ladoDireito .dados .comtainer-form button{
+	display:flex;
+    flex-direction: row;
     justify-content: center;
     align-items:center;
     margin-left:200px;
 	width: auto;
 	border: 2px solid black;
+    margin-left: 50px;
 	
 }
-
-
-
-
 .ladoEsquerdo .botoes button:hover, .ladoDireito .dados .comtainer-form button:hover{
 	background:  #161616be;
 }

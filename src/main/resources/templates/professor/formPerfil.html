@@ -2,12 +2,113 @@
 <html xmlns:th="http://thymeleaf.org"
 	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 	<head>
-		<title>AVA - Perfil</title>
+		<title>AVA - Professores</title>
 		<meta charset="utf-8">
-		<link rel="stylesheet" th:href="@{/css/professor.css}"/>
+		<link rel="stylesheet" th:href="@{/css/formPerfil.css}"/>
 		<script src="/js/professor.js"></script>
+		 <!--Import Google Icon Font-->
+		 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
 	</head>
-	
+
+	<body id="telaInicial">
+		<div id="cabecalho">
+			<div id="logo">
+				<img th:src="@{/imagens/logotopo.svg}" height="70px"  />
+			</div>
+			<div id="titulo">
+				<strong color="#B40404">Área Restrita<br>
+				Professor<br>
+				</strong>
+			</div>
+		</div>
+			
+	</div>
+	<ul id="horizontal">
+		<li>
+			   &nbsp;&nbsp; 
+		</li>
+		<li class="home primeiro">
+			<a href="/professor">Home</a>
+		</li>
+		<li class="tarefas">
+			<a href="/turmas">Turmas</a>
+		</li>
+		<li id="perfil">
+			<a href="/perfil">Perfil</a>
+		</li>
+		<li id="logout">
+			<a href="login.html"><strong>Logout</strong></a>
+		</li>
+		<li id="logout">&nbsp;&nbsp; </li>
+	</ul>
+
+	<div id="rotina">
+		<div class="ladoEsquerdo">
+			<div id="perfilImagem">
+				<img th:src="@{/imagens/usuario.png}" height="160px"/>
+			</div>
+			<div id="tipoPerfil">
+				<p >Professor</p>
+			</div>
+			
+		</div>
+		<div class="ladoDireito">
+			<div class="atualizarPerfil">
+				<p>ATUALIZAR PERFIL </p>
+			</div>
+			<div class="dados">
+				<form method="post">
+					<div class="comtainer-form">
+						<div class="dados">
+							<p>Nome: </p>
+							<input th:each="professor : ${professor}" type="text" th:value ="${professor.nome}" name="nome"/>
+						</div>
+						<div class="dados">
+							<p>Matricula: </p>
+							<input th:each="professor : ${professor}" type="text" th:value ="${professor.matricula}" name="matricula"/>
+						</div>
+				    </div>
+					<div class="comtainer-form">
+						<div class="dados">
+							<p>Curso: </p>
+							<input th:each="professor : ${professor}" type="text" th:value ="${professor.curso}" name="curso"/>
+					</div></div>
+					<div class="comtainer-form">
+						<div class="dados">
+							<p>Email: </p>
+							<input th:each="professor : ${professor}" type="email" th:value ="${professor.email}" name="email"/>
+						</div>
+						<div class="dados">
+							<p>Senha: </p>
+							<input th:each="professor : ${professor}" type="password" th:value ="${professor.senha}" name="senha"/>
+						</div>
+					</div>
+					<div class="comtainer-form">
+						<div class="botoes">
+							<button type="submit" >Salvar perfil
+								<i class="material-icons" >save</i></button>
+							<button type="submit" onclick="cancelarPerfil()">Cancelar
+								<i class="material-icons">close</i></button></button>
+						</div>
+					</div>
+				</form>
+			</div>
+			
+			
+		</div>
+	</div>
+		<div id="rodape">
+			<strong>TODOS OS DIREITOS RESERVADOS</strong><br>
+			Universidade Estadual da Paraíba - UEPB |
+			Equipe : 10 em Ead
+			<img th:src="@{/imagens/computer.png}" />
+		</div>
+	</body>
+</html>
+
+
+<!--
 	<body>
 		<h1>Atualizar Perfil</h1>
 		<form method="post">
@@ -22,4 +123,4 @@
 	
 	
 	</body>
-</html>
+</html>-->
