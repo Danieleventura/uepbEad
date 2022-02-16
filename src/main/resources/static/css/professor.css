@@ -124,11 +124,6 @@ ul a
  background: url(../imagens/divisor.png) no-repeat;
 }
 
-ul .primeiro a
-{
-	background: white;
-	color: red;
-}
 
 ul a:hover
 {
