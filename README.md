@@ -13,4 +13,4 @@ Na classe DataConfiguration mudar usuario e senha.
 dataSource.setUsername("SeuUsuario");
 dataSource.setPassword("SuaSenha");
 
-
+Rota de acesso Login: http://localhost:8080/
