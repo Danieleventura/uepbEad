@@ -66,6 +66,18 @@ public class TurmaController {
 		return mv;
 	}
 	
+	@RequestMapping(value = "/turma")
+	public ModelAndView detalheTurmas() {
+		Turma turma = turmaService.findByUser();
+		TurmaAtual turmaAtual = new TurmaAtual();
+		turmaAtual.setId(turma.getId());
+		TurmaAtual user = turmaAtualService.create(turmaAtual);
+		ModelAndView mv = new ModelAndView("turma/detalheTurma");
+		mv.addObject("turma", turma);
+		
+		return mv;
+	}
+	
 	@RequestMapping(value = "/turma/apagar")
 	public String deletarTurma() {
 		Turma turma = turmaService.findByUser();

@@ -6,3 +6,7 @@ function criarTurma(){
 function listarTurma(){
 	   window.location ="/turmas";
 }
+
+function detalheTurma(){
+   window.location ="/turma";
+}
