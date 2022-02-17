@@ -37,16 +37,11 @@ public class ConteudoController {
 	}
 	
 	@RequestMapping(value = "/cadastro/conteudo", method = RequestMethod.POST)
-	public String conteudo(@Valid Conteudo conteudo, BindingResult result, RedirectAttributes attributes) {
+	public String conteudo(Conteudo conteudo) {
 		
-		if(result.hasErrors()) {
-			attributes.addFlashAttribute("mensagem", "Verifique os campos!");
-			return "redirect:/cadastro/conteudo";
-		}
 		Turma turma = turmaService.findByUser();  // pegando turma para alocar no conteudo
 		conteudo.setIdTurma(turma.getId());
 		Conteudo a = conteudoService.create(conteudo);
-		attributes.addFlashAttribute("mensagem", "Conteudo adicioncado com sucesso!");
 		
 		return "redirect:/conteudo";
 	}
@@ -76,6 +71,21 @@ public class ConteudoController {
 		
 	}
 	
+	@RequestMapping(value = "/conteudo/detalhe", method = RequestMethod.GET )
+	public ModelAndView detalheConteudo() {
+		Conteudo c = conteudoService.findByLasConteudo();
+		ConteudoAtual conteudoAtual = new ConteudoAtual();
+		conteudoAtual.setId(c.getId());
+		ConteudoAtual user = conteudoAtualService.create(conteudoAtual);
+		Conteudo conteudo = conteudoService.findById(c.getId());
+		
+		ModelAndView mv = new ModelAndView("turma/detalheConteudo");
+		mv.addObject("conteudo", conteudo);
+		
+		return mv;
+		
+	}
+	
 	@RequestMapping(value = "/conteudo/apagar")
 	public String deletarConteudo(int id) {
 		
@@ -94,8 +104,13 @@ public class ConteudoController {
 	}
 	
 	@RequestMapping(value = "/conteudo/editar", method = RequestMethod.GET)
-	public String editarConteudo() {
+	public ModelAndView editarConteudo() {
+		Conteudo c = conteudoService.findByLasConteudo();
+		Conteudo conteudo = conteudoService.findById(c.getId());
 		
-		return "turma/formEditarConteudo";
+		ModelAndView mv = new ModelAndView("turma/formEditarConteudo");
+		mv.addObject("conteudo", conteudo);
+		
+		return mv;
 	}
 }

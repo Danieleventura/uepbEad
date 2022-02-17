@@ -2,10 +2,12 @@
 <html xmlns:th="http://thymeleaf.org"
 	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 	<head>
-		<title>AVA - Professores</title>
+		<title>AVA - Turmas</title>
 		<meta charset="utf-8">
-		<link rel="stylesheet" th:href="@{/css/professor.css}"/>
-		<script src="/js/conteudo.js"></script>
+		<link rel="stylesheet" th:href="@{/css/detalheTurma.css}"/>
+		<script src="/js/turma.js"></script>
+		 <!--Import Google Icon Font-->
+		 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	</head>
 
 	<body id="telaInicial">
@@ -20,64 +22,57 @@
 			</div>
 		</div>
 			
-	<ul id="horizontal">
-		<li>
-			   &nbsp;&nbsp; 
-		</li>
-		<li class="home primeiro">
-			<a href="/professor">Home</a>
-		</li>
-		<li class="tarefas">
-			<a href="/turmas">Turmas</a>
-		</li>
-		<li class="relatorios">
-			<a href="/alunos">Alunos</a>
-		</li>
-		<li class="relatorios">
-			<a href="/conteudo">Conteúdos</a>
-		</li>
-		<li class="cadastros">
-			<a href="/avaliacao">Avaliações</a>
-		</li>
-		<li id="logout">
-			<a href="login.html"><strong>Logout</strong></a>
-		</li>
-		<li id="logout">&nbsp;&nbsp; </li>
-	</ul>
-
-	<div id="rotina">
-		<h1>Conteúdos</h1>
-		<table class ="container">
-			<thead>
-				<tr>
-					<th>Id</th>
-					<th>Nome</th>
-					<th>Descricao</th>
-					<th>Deletar</th>
-					<th>Editar</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr th:each="conteudo : ${conteudo}">
-					<td><span th:text="${conteudo.id}"></span></td>
-					<td><a th:href="${(#mvc.url('CC#detalhesConteudo').arg(0, conteudo.id)).build()}"><span th:text="${conteudo.nome}"></span></a></td>
-					<td><span th:text="${conteudo.descricao}"></span></td>
-					<td><a th:href="${(#mvc.url('CC#deletarConteudo').arg(0, conteudo.id)).build()}">Deletar</a></td>
-					<td><a href="/conteudo/editar/">Editar</a></td>
-				</tr>
-			</tbody>
-		</table>
-		<div>
-			<br>
-			<button class="submit" type="submit" onclick="listarConteudo()">Lista de Conteúdo</button>
 		</div>
-	</div>
+		<ul id="horizontal">
+			<li>
+				   &nbsp;&nbsp; 
+			</li>
+			<li class="home primeiro">
+				<a href="/professor">Home</a>
+			</li>
+			<li class="tarefas">
+				<a href="/turmas">Turmas</a>
+			</li>
+			<li class="relatorios">
+				<a href="/alunos">Alunos</a>
+			</li>
+			<li class="relatorios">
+				<a href="/conteudo">Conteúdos</a>
+			</li>
+			<li class="cadastros">
+				<a href="/avaliacao">Avaliações</a>
+			</li>
+			<li id="logout">
+				<a href="login.html"><strong>Logout</strong></a>
+			</li>
+			<li id="logout">&nbsp;&nbsp; </li>
+		</ul>
 
-		<div id="rodape">
-			<strong>TODOS OS DIREITOS RESERVADOS</strong><br>
-			Universidade Estadual da Paraíba - UEPB |
-			Equipe : 10 em Ead
-			<img th:src="@{/imagens/computer.png}" />		
+		<div id="rotina">
+			<div class="container">
+				<div id="titulo"  th:each="conteudo : ${conteudo}">
+					<div id="informacao">
+						<p>CONTEÚDO</p>
+						<span th:text="${conteudo.nome}"></span>
+						<span th:text="${conteudo.descricao}"></span>
+					</div>
+					<div id="link">
+						<a href="/conteudo/editar/">
+							<i class="large material-icons">edit</i>
+						</a>
+						<a th:href="${(#mvc.url('CC#deletarConteudo').arg(0, conteudo.id)).build()}">
+							<i class="large material-icons">delete</i>
+						</a>
+					</div>
+				</div>
+			</div>
 		</div>
+
+			<div id="rodape">
+				<strong>TODOS OS DIREITOS RESERVADOS</strong><br>
+				Universidade Estadual da Paraíba - UEPB |
+				Equipe : 10 em Ead
+				<img th:src="@{/imagens/computer.png}" />		
+			</div>
 	</body>
 </html>

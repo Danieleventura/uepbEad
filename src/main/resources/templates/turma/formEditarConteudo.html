@@ -2,10 +2,12 @@
 <html xmlns:th="http://thymeleaf.org"
 	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 	<head>
-		<title>AVA - Conteúdo</title>
+		<title>AVA - Turmas</title>
 		<meta charset="utf-8">
-		<link rel="stylesheet" th:href="@{/css/professor.css}"/>
-		<script src="js/conteudo.js"></script>
+		<link rel="stylesheet" th:href="@{/css/turma.css}"/>
+		<script src="/js/conteudo.js"></script>
+		 <!--Import Google Icon Font-->
+		 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	</head>
 
 	<body id="telaInicial">
@@ -19,12 +21,85 @@
 				</strong>
 			</div>
 		</div>
+			
+		<ul id="horizontal">
+			<li>
+				   &nbsp;&nbsp; 
+			</li>
+			<li class="home primeiro">
+				<a href="/professor">Home</a>
+			</li>
+			<li class="tarefas">
+				<a href="/turmas">Turmas</a>
+			</li>
+			<li class="relatorios">
+				<a href="/alunos">Alunos</a>
+			</li>
+			<li class="relatorios">
+				<a href="/conteudo">Conteúdos</a>
+			</li>
+			<li class="cadastros">
+				<a href="/avaliacao">Avaliações</a>
+			</li>
+			<li id="logout">
+				<a href="login.html"><strong>Logout</strong></a>
+			</li>
+			<li id="logout">&nbsp;&nbsp; </li>
+		</ul>
 
+		<div id="rotina">
+			<div class="container">
+				<div id="titulo">
+					<p>EDITAR CONTEÚDO</p>
+				</div>
+				<div id="dados">
+					<form method="post">
+						<div class="cadastro">
+							<div class="comtainer-form">
+								<div class="dados">
+									<p>Titulo: <input th:each="conteudo : ${conteudo}" type="text" th:value="${conteudo.nome}" name="nome"/></p>
+									
+								</div>
+								<div class="dados">
+									<p>Descrição: <input th:each="conteudo : ${conteudo}" type="text" th:value="${conteudo.descricao}" name="descricao"/></p>
+								</div>
+							</div>
+						</div>
+						<div class="comtainer-form">
+							<div class="botoes">
+								<button class="submit" type="submit" >Salvar
+									<i class="material-icons" >save</i></button>
+							</div>
+						</div>
+					</form>
+					<div class="botoes">
+						<button class="cancelar" onclick="listarConteudo()">Cancelar
+							<i class="material-icons">close</i></button>
+					</div>
+					
+				</div>
+			</div>
+		</div>
+
+			<div id="rodape">
+				<strong>TODOS OS DIREITOS RESERVADOS</strong><br>
+				Universidade Estadual da Paraíba - UEPB |
+				Equipe : 10 em Ead
+				<img th:src="@{/imagens/computer.png}" />		
+			</div>
+	</body>
+</html>
+
+
+
+
+<!--
 	<div id="rotina">
-		<h1>Editar Conteúdo</h1>
+		<h1>Conteúdo</h1>
 		<form method="post">
 			Nome: <input type="text" value="" name="nome"/>
 			Descricao: <input type="text" value="" name="descricao"/>
+			
 			<th:block th:include="mensagemValidacao"></th:block>
 			<div>
 				<br>
@@ -32,12 +107,5 @@
 			</div>
 		</form>
 	</div>
+-->	
 
-		<div id="rodape">
-			<strong>TODOS OS DIREITOS RESERVADOS</strong><br>
-			Universidade Estadual da Paraíba - UEPB |
-			Equipe : 10 em Ead
-			<img th:src="@{/imagens/computer.png}">		
-		</div>
-	</body>
-</html>
