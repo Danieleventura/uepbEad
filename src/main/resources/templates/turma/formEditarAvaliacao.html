@@ -71,6 +71,9 @@
 								<div class="dados">
 									<p>Nota: <input th:each="avaliacao : ${avaliacao}" type="text" th:value="${avaliacao.nota}" name="nota"/></p>
 								</div>
+								<div class="dados">
+									<p>Documento: <input th:each="avaliacao : ${avaliacao}" type="text" th:value="${avaliacao.pdf}" name="pdf"/></p>
+								</div>
 							</div>
 						</div>
 						<div class="comtainer-form">
@@ -81,7 +84,7 @@
 						</div>
 					</form>
 					<div class="botoes">
-						<button class="cancelar" onclick="listarConteudo()">Cancelar
+						<button class="cancelar" onclick="listarAvaliacao()">Cancelar
 							<i class="material-icons">close</i></button>
 					</div>
 					

@@ -44,4 +44,8 @@ public class Avaliacao {
 
 	@Column
 	private int idTurma;
+	
+	@Column
+	@NotEmpty
+	private String pdf;
 }

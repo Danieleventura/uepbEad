@@ -10,6 +10,7 @@ public class AvaliacaoDTO {
 	public String dataFinal;
 	public String descricao;
 	public String nota;
+	public String pdf;
 	public int idTurma;
 	
 	public AvaliacaoDTO(Avaliacao p) {
@@ -20,5 +21,6 @@ public class AvaliacaoDTO {
 		this.descricao = p.getDescricao();
 		this.nota = p.getNota();
 		this.idTurma = p.getIdTurma();
+		this.pdf = p.getPdf();
 	}
 }
