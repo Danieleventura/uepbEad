@@ -2,10 +2,12 @@
 <html xmlns:th="http://thymeleaf.org"
 	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 	<head>
-		<title>AVA - Professores</title>
+		<title>AVA - Turmas</title>
 		<meta charset="utf-8">
-		<link rel="stylesheet" th:href="@{/css/professor.css}"/>
+		<link rel="stylesheet" th:href="@{/css/turma.css}"/>
 		<script src="/js/avaliacao.js"></script>
+		 <!--Import Google Icon Font-->
+		 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	</head>
 
 	<body id="telaInicial">
@@ -20,7 +22,11 @@
 			</div>
 		</div>
 			
+	</div>
 	<ul id="horizontal">
+		<li>
+			   &nbsp;&nbsp; 
+		</li>
 		<li class="home primeiro">
 			<a href="/professor">Home</a>
 		</li>
@@ -41,35 +47,32 @@
 		</li>
 		<li id="logout">&nbsp;&nbsp; </li>
 	</ul>
-
 	<div id="rotina">
-		<h1>Lista de Avaliações</h1>
-		<table>
-			<thead>
-				<tr>
-					<th>Titulo</th>
-					<th>Descrição</th>
-					<th>Data Inicial</th>
-					<th>Data Final</th>
-					<th>Nota</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr th:each="avaliacao : ${avaliacoes}">
-					<td><a th:href="${(#mvc.url('AC#detalhesAvaliacao').arg(0,avaliacao.id)).build()}"><span th:text="${avaliacao.nome}"></span></a></td>
-					<td><span th:text="${avaliacao.descricao}"></span></td>
-					<td><span th:text="${avaliacao.dataInicio}"></span></td>
-					<td><span th:text="${avaliacao.dataFinal}"></span></td>
-					<td><span th:text="${avaliacao.nota}"></span></td>
-				</tr>
-			</tbody>
-		</table>
-		<div>
-			<br>
-			<button class="submit" type="submit" onclick="criarAvaliacao()">Criar Avaliação</button>
+		<div class="container">
+			<div id="titulo">
+				<p>CONTEÚDOS</p>
+			</div>
+			<div class="container-turma">
+				<ol id="horizontal" th:each="avaliacao : ${avaliacoes}">
+					<div class="turmas">
+						<li>
+							<td><span th:text="${avaliacao.nome}"></span><i class="material-icons">event_available
+							</i></td>
+						</li>
+						<a th:href="${(#mvc.url('AC#detalhesAvaliacao').arg(0,avaliacao.id)).build()}">
+							<button type="submit" >Abrir</button>
+						</a>
+					</div>
+				</ol>	
+			</div>
+			<div class="criarTurma">
+				<br>
+				<button class="submit" type="submit" onclick="criarAvaliacao()">Criar Avaliação
+					<i class="material-icons">add
+					</i></button>
+			</div>
 		</div>
 	</div>
-
 		<div id="rodape">
 			<strong>TODOS OS DIREITOS RESERVADOS</strong><br>
 			Universidade Estadual da Paraíba - UEPB |

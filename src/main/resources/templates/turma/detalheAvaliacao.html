@@ -2,10 +2,12 @@
 <html xmlns:th="http://thymeleaf.org"
 	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 	<head>
-		<title>AVA - Professores</title>
+		<title>AVA - Turmas</title>
 		<meta charset="utf-8">
-		<link rel="stylesheet" th:href="@{/css/professor.css}"/>
+		<link rel="stylesheet" th:href="@{/css/detalheAvaliacao.css}"/>
 		<script src="/js/avaliacao.js"></script>
+		 <!--Import Google Icon Font-->
+		 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	</head>
 
 	<body id="telaInicial">
@@ -20,64 +22,64 @@
 			</div>
 		</div>
 			
-	<ul id="horizontal">
-		<li>
-			   &nbsp;&nbsp; 
-		</li>
-		<li class="home primeiro">
-			<a href="/professor">Home</a>
-		</li>
-		<li class="tarefas">
-			<a href="/turmas">Turmas</a>
-		</li>
-		<li class="relatorios">
-			<a href="/alunos">Alunos</a>
-		</li>
-		<li class="relatorios">
-			<a href="/conteudo">Conteúdos</a>
-		</li>
-		<li class="cadastros">
-			<a href="/avaliacao">Avaliações</a>
-		</li>
-		<li id="logout">
-			<a href="login.html"><strong>Logout</strong></a>
-		</li>
-		<li id="logout">&nbsp;&nbsp; </li>
-	</ul>
-
-	<div id="rotina">
-		<h1>Avaliação</h1>
-		<div th:each="avaliacao : ${avaliacao}" >
-			<div class="row">
-				<p>Id: <span th:text="${avaliacao.id}"></span></p>
-				<p>Nome: <span th:text="${avaliacao.nome}"></span></p>
-				<p>Data Inicio: <span th:text="${avaliacao.dataInicio}"></span></p>
-				<p>Data Final: <span th:text="${avaliacao.dataFinal}"></span></p>
-				<p>Descrição: <span th:text="${avaliacao.descricao}"></span></p>
-				<p>Nota: <span th:text="${avaliacao.nota}"></span></p>
-				<p><a th:href="${(#mvc.url('AC#deletarAvaliacao').arg(0, avaliacao.id)).build()}">Deletar</a></p>
-				<p><a href="/avaliacao/editar/">Editar</a></o>
+		</div>
+		<ul id="horizontal">
+			<li>
+				   &nbsp;&nbsp; 
+			</li>
+			<li class="home primeiro">
+				<a href="/professor">Home</a>
+			</li>
+			<li class="tarefas">
+				<a href="/turmas">Turmas</a>
+			</li>
+			<li class="relatorios">
+				<a href="/alunos">Alunos</a>
+			</li>
+			<li class="relatorios">
+				<a href="/conteudo">Conteúdos</a>
+			</li>
+			<li class="cadastros">
+				<a href="/avaliacao">Avaliações</a>
+			</li>
+			<li id="logout">
+				<a href="login.html"><strong>Logout</strong></a>
+			</li>
+			<li id="logout">&nbsp;&nbsp; </li>
+		</ul>
+		<div id="rotina">
+			<div class="container">
+				<div id="titulo" th:each="avaliacao : ${avaliacao}">
+					<div id="informacao">
+						<div id="link">
+							<p>AVALIAÇÃO</p>
+							<a href="/avaliacao/editar/">
+								<i class="large material-icons">edit</i>
+							</a>
+							<a th:href="${(#mvc.url('AC#deletarAvaliacao').arg(0, avaliacao.id)).build()}">
+								<i class="large material-icons">delete</i>
+							</a>
+						</div>
+						<div class="info">
+							<p>Nome: <span th:text="${avaliacao.nome}"></span></p>
+							<p>Nota: <span th:text="${avaliacao.nota}"></span></p>
+						</div>
+						<div class="data">
+							<p>Data Inicio: <span th:text="${avaliacao.dataInicio}"></span></p>
+							<p>Data Final: <span th:text="${avaliacao.dataFinal}"></span></p>
+						</div>
+						<p>Descrição: <span th:text="${avaliacao.descricao}"></span></p>
+					</div>
+				</div>
+				
 			</div>
 		</div>
-		<div>
-			<br>
-			<button class="submit" type="submit" onclick="listarAvaliacao()">Lista de Avaliações</button>
-		</div>
-		<div>
-			<br>
-			<button class="submit" type="submit" onclick="editarAvaliacao()">Editar Avaliação</button>
-		</div>
-		<div>
-			<br>
-			<button class="submit" type="submit" onclick="apagarAvaliacao()">Apagar Avaliação</button>
-		</div>
-	</div>
 
-		<div id="rodape">
-			<strong>TODOS OS DIREITOS RESERVADOS</strong><br>
-			Universidade Estadual da Paraíba - UEPB |
-			Equipe : 10 em Ead
-			<img th:src="@{/imagens/computer.png}" />		
-		</div>
+			<div id="rodape">
+				<strong>TODOS OS DIREITOS RESERVADOS</strong><br>
+				Universidade Estadual da Paraíba - UEPB |
+				Equipe : 10 em Ead
+				<img th:src="@{/imagens/computer.png}" />		
+			</div>
 	</body>
 </html>

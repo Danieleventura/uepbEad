@@ -15,6 +15,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.uepb.projetoWeb.domain.dto.AvaliacaoDTO;
 import com.uepb.projetoWeb.models.Avaliacao;
 import com.uepb.projetoWeb.models.AvaliacaoAtual;
+import com.uepb.projetoWeb.models.Conteudo;
 import com.uepb.projetoWeb.models.Turma;
 import com.uepb.projetoWeb.service.AvaliacaoAtualService;
 import com.uepb.projetoWeb.service.AvaliacaoService;
@@ -91,11 +92,14 @@ public class AvaliacaoController {
 		return "redirect:/avaliacao";
 	}
 	
-	@RequestMapping(value = "/avaliacao/editar/", method = RequestMethod.GET)
-	public String editarConteudo() {
-
-		//conteudoService.update(conteudo, id);
+	@RequestMapping(value = "/avaliacao/editar", method = RequestMethod.GET)
+	public ModelAndView editarAvaliacao() {
+		Avaliacao c = avaliacaoService.findByLasAvaliacao();
+		Avaliacao avaliacao = avaliacaoService.findById(c.getId());
 		
-		return "turma/formEditarAvaliacao";
+		ModelAndView mv = new ModelAndView("turma/formEditarAvaliacao");
+		mv.addObject("avaliacao", avaliacao);
+		
+		return mv;
 	}
 }
