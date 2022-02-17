@@ -12,7 +12,7 @@ public class AlunoController {
 	
 	@RequestMapping(value = "/alunos", method = RequestMethod.GET)
 	public String avaliacao() {
-		return "professor/alunos";
+		return "aluno/alunos";
 	}
 
 }
