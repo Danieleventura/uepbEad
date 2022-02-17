@@ -24,6 +24,11 @@ public class LoginController {
 		return "login/login";
 	}
 	
+	@RequestMapping(value = "/login/suporte", method = RequestMethod.GET)
+	public String suporte() {
+		return "login/suporte";
+	}
+	
 	@RequestMapping(value = "/", method = RequestMethod.POST)
 	public String login(Login login ) {
 		

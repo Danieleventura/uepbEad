@@ -27,6 +27,6 @@
     
     
     function criarUsuario(){
-    	window.location ="/cadastro/usuario";   
-    	
+    	window.location ="/cadastro/usuario"; 
     }
+    

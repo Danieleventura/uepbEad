@@ -1,16 +1,17 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://thymeleaf.org"
+	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 	<head>
 		<title>AVA - Suporte</title>
 		<meta charset="utf-8">
-		<link rel="stylesheet" type="text/css" href="css/suporte.css">
-		<script src="js/suporte.js"></script>
+		<link rel="stylesheet" th:href="@{/css/suporte.css}"/>
+		<script src="/js/suporte.js"></script>
 	</head>
 
 	<body id="telaInicial">
 		<div id="cabecalho">
 			<div id="logo">
-				<img src="imagens/logotopo.svg" height="70px">
+				<img th:src="@{/imagens/logotopo.svg}" height="70px"  />
 			</div>
 			<div id="titulo">
 				<strong color="#B40404">Área Restrita<br>
@@ -23,20 +24,20 @@
 			   &nbsp;&nbsp; 
 		</li>
 		<li class="home primeiro">
-			<a href="suporte.html">Home</a>
+			<a href="/cadastro/usuario">Home</a>
 		</li>
 		<li class="tarefas">
-			<a href="suporteCadastros.html">Cadastros</a>
+			<a href="/cadastro/cadastro">Cadastros</a>
 		</li>
 		<li id="logout">
-			<a href="login.html"><strong>Logout</strong></a>
+			<a href="/"><strong>Logout</strong></a>
 		</li>
 		<li id="logout">&nbsp;&nbsp; </li>
 	</ul>
 
 	<div id="rotina">
 		<p>Bem-vindo a área do Suporte!</p>
-		<p>Aqui é possivel cadastrar os professores!
+		<p>Aqui é possivel cadastrar os usuarios do sistema!
 			<br>
 			<br>
 			<br>
@@ -48,7 +49,7 @@
 			<strong>TODOS OS DIREITOS RESERVADOS</strong><br>
 			Universidade Estadual da Paraíba - UEPB |
 			Equipe : 10 em Ead
-			<img src="imagens/computer.png">		
+			<img th:src="@{/imagens/computer.png}" />		
 		</div>
 	</body>
 </html>

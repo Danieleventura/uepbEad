@@ -124,11 +124,6 @@ ul a
  background: url(../imagens/divisor.png) no-repeat;
 }
 
-ul .primeiro a
-{
-	background: white;
-	color: red;
-}
 
 ul a:hover
 {
@@ -188,9 +183,10 @@ placeholder
 	margin-top: 160px;
 	padding:  1px;
 	text-align: center;
-	font-size: 20px;
+	font-size: 10px;
 	letter-spacing: 0.1em;
 	color: #800000;
+	align: center
 }
 
 #container img
@@ -200,7 +196,7 @@ placeholder
 	margin-bottom: 10px;
 }
 
-input
+input, button
 {
 	height: 40px;
 	width: 80%;
@@ -224,7 +220,7 @@ input.senha
 	background-image: url(../imagens/icone-cadeado.png);
 }
 
-input.submit
+input.submit, button.submit
 {
 	color: #fff;
 	background: #151515 linear-gradient(to bottom, #2E2E2E, #151515);
@@ -236,7 +232,7 @@ input.submit
 
 }
 
-input.submit:hover
+input.submit:hover, button.submit:hover
 {
 	background:  #000000;
 }

@@ -4,26 +4,69 @@
 	<head>
 		<title>AVA - Cadastro</title>
 		<meta charset="utf-8">
-		<link rel="stylesheet" th:href="@{/css/professor.css}"/>
+		<link rel="stylesheet" th:href="@{/css/cadastroUser.css}"/>
 		<script src="/js/avaliacao.js"></script>
 	</head>
+
+	<body id="telaInicial">
+		<div id="cabecalho">
+			<div id="logo">
+				<img th:src="@{/imagens/logotopo.svg}" height="70px"  />
+			</div>
+			<div id="titulo">
+				<strong color="#B40404">Área Restrita<br>
+				Suporte<br>
+				</strong>
+			</div>
+		</div>
+		<ul id="horizontal">
+		<li>
+			   &nbsp;&nbsp; 
+		</li>
+		<li class="home primeiro">
+			<a href="/cadastro/usuario">Home</a>
+		</li>
+		<li class="tarefas">
+			<a href="/cadastro/cadastro">Cadastros</a>
+		</li>
+		<li id="logout">
+			<a href="/"><strong>Logout</strong></a>
+		</li>
+		<li id="logout">&nbsp;&nbsp; </li>
+	</ul>
+
 	
-	<body>
-		<h1>Cadastro</h1>
-		<form method="post">
-			Nome: <input type="text" value="" name="nome"/>
-			Matricula: <input type="text" value="" name="matricula"/>
-			Curso: <input type="text" value="" name="curso"/>
-			E-mail: <input type="email" value="" name="email"/>
-			Senha: <input type="password" value="" name="senha"/>
+	<div id="rotina" >
+	
+		<div class="container">
+			<h1>Cadastro</h1>
 			
-			<select name="tipo">
-				<option value="professor">Professor</option>
-				<option value="aluno">Aluno</option>
-			</select>
-			<button type="submit"> Cadastrar </button>
-		</form>
+			<form method="post">
+					Nome:<input type="text" value="" name="nome"/>
+					Matricula: <input type="text" value="" name="matricula"/><br>
+					Curso: <input type="text" value="" name="curso"/><br>
+					E-mail: <input type="email" value="" name="email"/><br>
+					Senha: <input type="password" value="" name="senha"/><br>
+					Tipo :
+					<select name="tipo">
+						<option value="professor">Professor</option>
+						<option value="aluno">Aluno</option>
+					</select>
+					<br>
+					<br>
+					<br>
+					<input class="submit" type="submit" value="Cadastrar">
+					
+				</form>
+		</div>
+		
+	</div>
 	
-	
+		<div id="rodape">
+			<strong>TODOS OS DIREITOS RESERVADOS</strong><br>
+			Universidade Estadual da Paraíba - UEPB |
+			Equipe : 10 em Ead
+			<img th:src="@{/imagens/computer.png}" />		
+		</div>
 	</body>
 </html>

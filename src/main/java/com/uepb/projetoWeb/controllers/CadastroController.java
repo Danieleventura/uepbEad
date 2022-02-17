@@ -20,10 +20,16 @@ public class CadastroController {
 	
 	@RequestMapping(value = "/cadastro/usuario", method = RequestMethod.GET)
 	public String cadastro() {
+		return "login/suporte";
+	}
+	
+	@RequestMapping(value = "/cadastro/cadastro", method = RequestMethod.GET)
+	public String formCadastro() {
 		return "login/formCadastro";
 	}
 	
-	@RequestMapping(value = "/cadastro/usuario", method = RequestMethod.POST)
+	
+	@RequestMapping(value = "/cadastro/cadastro", method = RequestMethod.POST)
 	public String cadastro(@Valid Usuario usuario, BindingResult result, RedirectAttributes attributes) {
 		if(result.hasErrors()) {
 			attributes.addFlashAttribute("mensagem", "Verifique os campos!");
