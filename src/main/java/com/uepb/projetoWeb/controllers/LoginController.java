@@ -36,11 +36,12 @@ public class LoginController {
 			if ("professor".equalsIgnoreCase(u.getTipo())) {
 				userAtual.setId(u.getId());
 				UserAtual user = userAtualService.create(userAtual);
-				return "redirect:/professor";	
+				return "professor/professor";
+				
 			}if ("aluno".equalsIgnoreCase(u.getTipo())) {
 				userAtual.setId(u.getId());
 				UserAtual user= userAtualService.create(userAtual);
-				return "redirect:/aluno";	
+				return "aluno/aluno";	
 			}
 		}
 		return null;
