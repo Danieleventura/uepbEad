@@ -39,6 +39,7 @@ public class TurmaController {
 	public String cadastro(Turma turma) {
 		Usuario professor = usuarioService.findByUser(); // pegando o usuario logado
 		turma.setIdProfessor(professor.getId());
+		turma.setCodigo(getRandomString());
 		Turma a = turmaService.create(turma);
 		return "redirect:/turmas";
 	}
@@ -91,6 +92,7 @@ public class TurmaController {
 		Turma c = turmaService.findByUser();
 		turma.setIdProfessor(c.getIdProfessor());
 		turma.setId(c.getId());
+		turma.setCodigo(c.getCodigo());
 		turmaService.update(turma, c.getId());
 		return "redirect:/turmas";
 	}
@@ -103,4 +105,30 @@ public class TurmaController {
 		
 		return mv;
 	}
+	
+	static String getRandomString(){ //metodo para gerar codigo da turma
+        String theAlphaNumericS;
+        StringBuilder builder;
+        int i = 10;
+        
+        theAlphaNumericS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+                                    + "0123456789"; 
+
+        //create the StringBuffer
+        builder = new StringBuilder(i); 
+
+        for (int m = 0; m < i; m++) { 
+
+            // generate numeric
+            int myindex 
+                = (int)(theAlphaNumericS.length() 
+                        * Math.random()); 
+
+            // add the characters
+            builder.append(theAlphaNumericS 
+                        .charAt(myindex)); 
+        } 
+
+        return builder.toString(); 
+    }
 }

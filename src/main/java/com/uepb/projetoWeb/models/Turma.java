@@ -33,6 +33,9 @@ public class Turma {
 	
 	@Column
 	private int idProfessor;
+	
+	@Column
+	private String codigo;
 
 	
 	//@OneToOne(cascade={CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})

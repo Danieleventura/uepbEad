@@ -11,11 +11,13 @@ public class TurmaDTO {
 	private String nome;
 	private String horario;
 	private int idProfessor;
+	private String codigo;
 	
 	public TurmaDTO(Turma p) {
 		this.id = p.getId();
 		this.nome = p.getNome();
 		this.horario = p.getHorario();
 		this.idProfessor = p.getIdProfessor();
+		this.codigo = p.getCodigo();
 	}
 }
