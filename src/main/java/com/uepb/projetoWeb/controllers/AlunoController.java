@@ -1,5 +1,6 @@
 package com.uepb.projetoWeb.controllers;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +12,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.uepb.projetoWeb.models.Turma;
+import com.uepb.projetoWeb.models.TurmaAtual;
 import com.uepb.projetoWeb.models.Usuario;
+import com.uepb.projetoWeb.service.TurmaAtualService;
+import com.uepb.projetoWeb.service.TurmaService;
 import com.uepb.projetoWeb.service.UsuarioService;
 
 @Controller
@@ -20,6 +25,21 @@ public class AlunoController {
 	@Autowired
 	private UsuarioService usuarioService;
 	public Usuario aluno;
+	@Autowired
+	private TurmaService turmaService;
+	@Autowired
+	private TurmaAtualService turmaAtualService;
+	
+	@RequestMapping(value = "/alunos", method = RequestMethod.GET) //metodo para listar alunos de uma turma
+	public ModelAndView turmasAluno() {
+		
+		ModelAndView mv = new ModelAndView("turma/alunos");
+		Turma turma = turmaService.findByUser();
+		List<Usuario> aluno = usuarioService.findCodigoTurma(turma.getCodigo());
+		mv.addObject("aluno", aluno);
+		
+		return mv;
+	}
 	
 	@RequestMapping(value = "/aluno/{id}", method = RequestMethod.GET)
 	public String aluno(@PathVariable("id") int id) {

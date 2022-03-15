@@ -1,5 +1,6 @@
 package com.uepb.projetoWeb.service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -10,7 +11,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
+import com.uepb.projetoWeb.domain.dto.AlunoTurmasDTO;
 import com.uepb.projetoWeb.domain.dto.UsuarioDTO;
+import com.uepb.projetoWeb.models.Turma;
 import com.uepb.projetoWeb.models.UserAtual;
 import com.uepb.projetoWeb.models.Usuario;
 import com.uepb.projetoWeb.repository.UsuarioRepository;
@@ -22,9 +25,10 @@ public class UsuarioService {
 	
 	@Autowired
 	private UsuarioRepository usuarioRepository;
-	
 	@Autowired
 	private UserAtualService userAtualService;
+	@Autowired
+	private AlunoTurmasService alunoTurmasService;
 	
 	public List<UsuarioDTO> findAll(){
 		return usuarioRepository.findAll().stream().map(UsuarioDTO::new).collect(Collectors.toList());
@@ -36,6 +40,23 @@ public class UsuarioService {
 	
 	public Optional<Usuario> findByEmail(String email) {
 		return usuarioRepository.findByEmail(email);
+	}
+	
+	public List<Usuario> findCodigoTurma(String codigo) { // encontrando os alunos que estão em uma turma
+		List<AlunoTurmasDTO> alunoTurmas = alunoTurmasService.findAll();
+		List<String> codigoTurma = new ArrayList<String>();
+		Optional<Usuario> t ;
+		List<Usuario> alunos = new ArrayList<Usuario>();
+		for(int i =0; i<alunoTurmas.size(); i++) {
+			if (codigo.equalsIgnoreCase(alunoTurmas.get(i).getCodigoTurma())){
+				t = findById(alunoTurmas.get(i).getIdAluno());
+				if (t.isPresent()) {
+					Usuario usuarioBD = t.get();
+					alunos.add(usuarioBD);
+				}
+			}
+		}
+		return alunos;
 	}
 	
 	public Usuario findByEmailSenha(String email, String senha, String tipo) {
