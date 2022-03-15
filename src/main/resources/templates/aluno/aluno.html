@@ -1,16 +1,17 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://thymeleaf.org"
+	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 	<head>
-		<title>AVA - Alunos</title>
+		<title>AVA - Aluno</title>
 		<meta charset="utf-8">
-		<link rel="stylesheet" type="text/css" href="css/aluno.css">
-		<script src="js/aluno.js"></script>
+		<link rel="stylesheet" th:href="@{/css/professor.css}"/>
+		<script src="/js/professor.js"></script>
 	</head>
 
 	<body id="telaInicial">
 		<div id="cabecalho">
 			<div id="logo">
-				<img src="imagens/logotopo.svg" height="70px">
+				<img th:src="@{/imagens/logotopo.svg}" height="70px"  />
 			</div>
 			<div id="titulo">
 				<strong color="#B40404">Área Restrita<br>
@@ -25,19 +26,13 @@
 			   &nbsp;&nbsp; 
 		</li>
 		<li class="home primeiro">
-			<a href="aluno.html">Home</a>
+			<a href="/aluno">Home</a>
 		</li>
 		<li class="tarefas">
-			<a href="alunoTurmas.html">Turmas</a>
+			<a href="/turmas/aluno">Turmas</a>
 		</li>
-		<li class="relatorios">
-			<a href="alunoConteudos.html">Conteúdos</a>
-		</li>
-		<li class="cadastros">
-			<a href="alunoAtividades.html">Atividades</a>
-		</li>
-		<li class="noticias">
-			<a href="alunoForum.html">Fórum</a>
+		<li id="perfil">
+			<a href="/perfil/aluno">Perfil</a>
 		</li>
 		<li id="logout">
 			<a href="/"><strong>Logout</strong></a>
@@ -47,7 +42,9 @@
 
 	<div id="rotina">
 		<p>Bem-vindo a área do Aluno!</p>
-		<p>Aluno, aqui você poderá visualizar seus conteúdos, atividades avaliativas a serem desenvolvidas, ferramentas de interação e acesso as notas.
+		<p>Aluno, aqui você poderá visualizar conteúdo, módulos e aulas, abrir ferramentas existentes no AVA.
+			<br>
+			<br>
 			<br>
 			<br>
 		   	<br> Faça um bom proveito!
@@ -58,7 +55,7 @@
 			<strong>TODOS OS DIREITOS RESERVADOS</strong><br>
 			Universidade Estadual da Paraíba - UEPB |
 			Equipe : 10 em Ead
-			<img src="imagens/computer.png">		
+			<img th:src="@{/imagens/computer.png}" />
 		</div>
 	</body>
 </html>

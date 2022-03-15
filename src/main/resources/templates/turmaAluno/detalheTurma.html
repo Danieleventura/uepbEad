@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org"
+	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+	<head>
+		<title>AVA - Turmas</title>
+		<meta charset="utf-8">
+		<link rel="stylesheet" th:href="@{/css/detalheTurma.css}"/>
+		<script src="/js/turma.js"></script>
+		 <!--Import Google Icon Font-->
+		 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	</head>
+
+	<body id="telaInicial">
+		<div id="cabecalho">
+			<div id="logo">
+				<img th:src="@{/imagens/logotopo.svg}" height="70px"  />
+			</div>
+			<div id="titulo">
+				<strong color="#B40404">Área Restrita<br>
+				Professor<br>
+				</strong>
+			</div>
+		</div>
+			
+		</div>
+		<ul id="horizontal">
+			<li>
+				   &nbsp;&nbsp; 
+			</li>
+			<li class="home primeiro">
+				<a href="/professor">Home</a>
+			</li>
+			<li class="tarefas">
+				<a href="/turmas">Turmas</a>
+			</li>
+			<li class="relatorios">
+				<a href="/alunos">Alunos</a>
+			</li>
+			<li class="relatorios">
+				<a href="/conteudo">Conteúdos</a>
+			</li>
+			<li class="cadastros">
+				<a href="/avaliacao">Avaliações</a>
+			</li>
+			<li id="logout">
+				<a href="/"><strong>Logout</strong></a>
+			</li>
+			<li id="logout">&nbsp;&nbsp; </li>
+		</ul>
+
+		<div id="rotina">
+			<div class="container">
+				<div id="titulo"  th:each="turma : ${turma}">
+					<div id="informacao">
+						<span th:text="${turma.nome}"></span>
+						<span th:text="${turma.horario}"></span>
+						<td>Código: <span th:text="${turma.codigo}"></span> </td>
+					</div>
+					<div id="link">
+						<a href="/turma/editar/">
+							<i class="large material-icons">edit</i>
+						</a>
+						<a href="/turma/apagar/">
+							<i class="large material-icons">delete</i>
+						</a>
+					</div>
+				</div>
+				<div id="dados">
+					<div class="container-turma">
+						<ol id="horizontal">
+							<div class="turmas">
+								<li>
+									<td><span>Alunos da turma</span><i class="material-icons">person
+									</i></td>
+								</li>
+								<a href="/alunos">
+									<button type="submit" >Abrir</button>
+								</a>
+							</div>
+							<div class="turmas">
+								<li>
+									<td><span>Conteúdos da turma</span><i class="material-icons">book
+									</i></td>
+								</li>
+								<a href="/conteudo">
+									<button type="submit" >Abrir</button>
+								</a>
+							</div>
+							<div class="turmas">
+								<li>
+									<td><span>Avaliações da turma</span><i class="material-icons">event_available
+									</i></td>
+								</li>
+								<a href="/avaliacao">
+									<button type="submit" >Abrir</button>
+								</a>
+							</div>
+						</ol>	
+					</div>
+					
+				</div>
+			</div>
+		</div>
+
+			<div id="rodape">
+				<strong>TODOS OS DIREITOS RESERVADOS</strong><br>
+				Universidade Estadual da Paraíba - UEPB |
+				Equipe : 10 em Ead
+				<img th:src="@{/imagens/computer.png}" />		
+			</div>
+	</body>
+</html>
+
+
+
+	<!--<div id="rotina">
+		<h1>Turma</h1>
+		<div th:each="turma : ${turma}" >
+			<div class="row">
+				<p>Nome: <span th:text="${turma.nome}"></span></p>
+				<p>Horario: <span th:text="${turma.horario}"></span></p>
+				<p><a th:href="${(#mvc.url('TC#deletarTurma').arg(0, turma.id)).build()}">Deletar</a></p>
+				<p><a href="/turma/editar/">Editar</a></o>
+			</div>
+		</div>
+		<div>
+			<br>
+			<button class="submit" type="submit" onclick="listarTurma()">Lista de Turmas</button>
+		</div>
+		<div>
+			<br>
+			<button class="submit" type="submit" onclick="editarTurma()">Editar Turma</button>
+		</div>
+		<div>
+			<br>
+			<button class="submit" type="submit" onclick="apagarTurma()">Apagar Turma</button>
+		</div>
+	</div>-->

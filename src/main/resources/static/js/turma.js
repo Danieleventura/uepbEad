@@ -10,3 +10,11 @@ function listarTurma(){
 function detalheTurma(){
    window.location ="/turma";
 }
+
+function entrarTurma(){
+   window.location ="/entrar/turma";
+}
+
+function listarTurmasAluno(){
+   window.location ="/turmas/aluno";
+}

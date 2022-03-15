@@ -12,9 +12,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.uepb.projetoWeb.models.AlunoTurmas;
 import com.uepb.projetoWeb.models.Turma;
 import com.uepb.projetoWeb.models.TurmaAtual;
 import com.uepb.projetoWeb.models.Usuario;
+import com.uepb.projetoWeb.service.AlunoTurmasService;
 import com.uepb.projetoWeb.service.TurmaAtualService;
 import com.uepb.projetoWeb.service.TurmaService;
 import com.uepb.projetoWeb.service.UsuarioService;
@@ -29,6 +31,8 @@ public class TurmaController {
 	private UsuarioService usuarioService;
 	@Autowired
 	private TurmaAtualService turmaAtualService;
+	@Autowired
+	private AlunoTurmasService alunoTurmasService;
 	
 	@RequestMapping(value = "/cadastro/turma", method = RequestMethod.GET)
 	public String cadastro() {
@@ -44,12 +48,38 @@ public class TurmaController {
 		return "redirect:/turmas";
 	}
 	
+	@RequestMapping(value = "/entrar/turma", method = RequestMethod.GET)
+	public String entrarTurma() {
+		return "turmaAluno/formTurma";
+	}
+	
+	@RequestMapping(value = "/entrar/turma", method = RequestMethod.POST)
+	public String entrarTurma(String codigoTurma) {
+		Usuario aluno = usuarioService.findByUser(); // pegando o usuario logado
+		AlunoTurmas a = new AlunoTurmas();
+		a.setCodigoTurma(codigoTurma);
+		a.setIdAluno(aluno.getId());
+		alunoTurmasService.create(a);
+		return "redirect:/turmas/aluno";
+	}
+	
 	@RequestMapping(value = "/turmas", method = RequestMethod.GET)
 	public ModelAndView turmas() {
 		
 		ModelAndView mv = new ModelAndView("turma/turma");
 		Usuario professor = usuarioService.findByUser();
 		Iterable<Turma> turmas = turmaService.findByIdProfessor(professor.getId());
+		mv.addObject("turmas", turmas);
+		
+		return mv;
+	}
+	
+	@RequestMapping(value = "/turmas/aluno", method = RequestMethod.GET)
+	public ModelAndView turmasAluno() {
+		
+		ModelAndView mv = new ModelAndView("turmaAluno/turma");
+		Usuario aluno = usuarioService.findByUser();
+		Iterable<Turma> turmas = turmaService.findCodigoTurma(aluno.getId());
 		mv.addObject("turmas", turmas);
 		
 		return mv;

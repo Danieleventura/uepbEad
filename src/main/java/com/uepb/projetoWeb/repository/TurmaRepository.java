@@ -16,5 +16,8 @@ public interface TurmaRepository extends JpaRepository<Turma, Long> {
 	void deleteById(int id);
 
 	List<Turma> findByIdProfessor(int id);
+	
+	Turma findByCodigo(String codigo);
+
 }
 

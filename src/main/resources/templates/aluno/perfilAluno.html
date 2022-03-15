@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org"
+	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+	<head>
+		<title>AVA - Aluno</title>
+		<meta charset="utf-8">
+		<link rel="stylesheet" th:href="@{/css/perfil.css}"/>
+		<script src="/js/aluno.js"></script>
+		 <!--Import Google Icon Font-->
+		 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+	</head>
+
+	<body id="telaInicial">
+		<div id="cabecalho">
+			<div id="logo">
+				<img th:src="@{/imagens/logotopo.svg}" height="70px"  />
+			</div>
+			<div id="titulo">
+				<strong color="#B40404">Área Restrita<br>
+				Aluno<br>
+				</strong>
+			</div>
+		</div>
+			
+	</div>
+	<ul id="horizontal">
+		<li>
+			   &nbsp;&nbsp; 
+		</li>
+		<li class="home primeiro">
+			<a href="/aluno">Home</a>
+		</li>
+		<li class="tarefas">
+			<a href="/turmas/aluno">Turmas</a>
+		</li>
+		<li id="perfil">
+			<a href="/perfil/aluno">Perfil</a>
+		</li>
+		<li id="logout">
+			<a href="/"><strong>Logout</strong></a>
+		</li>
+		<li id="logout">&nbsp;&nbsp; </li>
+	</ul>
+
+	<div id="rotina">
+		<div class="ladoEsquerdo">
+			<div id="perfilImagem">
+				<img th:src="@{/imagens/usuario.png}" height="160px"/>
+			</div>
+			<div id="tipoPerfil">
+				<p >Aluno</p>
+			</div>
+			<div class="botoes">
+					<button type="submit" onclick="editarPerfil()">Editar perfil
+						<i class="material-icons">create</i></button>
+					<button type="submit" onclick="apagarPerfil()">Apagar perfil
+						<i class="material-icons">delete</i></button>
+			</div>
+		</div>
+		<div class="ladoDireito">
+			<div class="perfil">
+				<p>PERFIL </p>
+			</div>
+			<div class="dados">
+				<p>Informações gerais </p>
+			</div>
+			<div class="dados">
+				<p>Nome: </p>
+				<td th:each="aluno : ${aluno}"><span th:text="${aluno.nome}"></span></td>
+			</div>
+			<div class="dados">
+				<p>Matricula: </p>
+				<td th:each="aluno : ${aluno}"><span th:text="${aluno.matricula}"></span></td>
+			</div>
+			<div class="dados">
+				<p>Curso: </p>
+				<td th:each="aluno : ${aluno}"><span th:text="${aluno.curso}"></span></td>
+			</div>
+			<div class="dados">
+				<p>E-mail: </p>
+				<td th:each="aluno : ${aluno}"><span th:text="${aluno.email}"></span></td>
+			</div>
+			
+		</div>
+	</div>
+
+		<div id="rodape">
+			<strong>TODOS OS DIREITOS RESERVADOS</strong><br>
+			Universidade Estadual da Paraíba - UEPB |
+			Equipe : 10 em Ead
+			<img th:src="@{/imagens/computer.png}" />
+		</div>
+	</body>
+</html>
