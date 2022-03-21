@@ -223,6 +223,20 @@ placeholder
 	margin-right: 50px;
 }
 
+
+.turmas .comentario{
+	background-color: white;
+	flex-direction: column;
+    justify-content:flex-start;
+	width: 800px;
+	height: auto;
+	background-color: #fff;
+	border-radius: 10px;
+	cursor: pointer;
+    transition: .3s ease all; /*delay*/
+	margin-right: 50px;
+}
+
 .container-turma .turmas li{
 	margin-bottom: 15px;
 }

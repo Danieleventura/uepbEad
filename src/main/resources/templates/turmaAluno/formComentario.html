@@ -4,8 +4,8 @@
 	<head>
 		<title>AVA - Turmas</title>
 		<meta charset="utf-8">
-		<link rel="stylesheet" th:href="@{/css/detalheTurma.css}"/>
-		<script src="/js/turma.js"></script>
+		<link rel="stylesheet" th:href="@{/css/turma.css}"/>
+		<script src="/js/conteudo.js"></script>
 		 <!--Import Google Icon Font-->
 		 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	</head>
@@ -17,12 +17,11 @@
 			</div>
 			<div id="titulo">
 				<strong color="#B40404">Área Restrita<br>
-				Professor<br>
+				Aluno<br>
 				</strong>
 			</div>
 		</div>
 			
-		</div>
 		<ul id="horizontal">
 			<li>
 				   &nbsp;&nbsp; 
@@ -50,40 +49,33 @@
 
 		<div id="rotina">
 			<div class="container">
-				<div id="titulo"  th:each="conteudo : ${conteudo}">
-					<div id="informacao">
-						<p>CONTEÚDO/AVISO</p>
-						<span th:text="${conteudo.nome}"></span>
-						<span th:text="${conteudo.descricao}"></span>
-					</div>
-					<div id="link">
-						<a href="/aluno/conteudo/editar/">
-							<i class="large material-icons">edit</i>
-						</a>
-						<a th:href="${(#mvc.url('CC#deletarConteudoAluno').arg(0, conteudo.id)).build()}">
-							<i class="large material-icons">delete</i>
-						</a>
-					</div>
+				<div id="titulo">
+					<p>POSTAR COMENTÁRIO</p>
 				</div>
-				<ol id="horizontal" th:each="comentario : ${comentario}">
-					<div class="turmas">
-						<div class="comentario">
-							<li>
-								<p>Nome: <td><span th:text="${comentario.nomeUsuario}"></span></td></p>
-								<p>Comentário: <td><span th:text="${comentario.comentario}"></span></td></p>
-
-							</li>
+				<div id="dados">
+					<form method="post">
+						<div class="cadastro">
+							<div class="comtainer-form">
+								<div class="dados">
+									<p>Comentário: <input  type="text" value="" name="comentario"/></p>
+									
+								</div>
+							</div>
 						</div>
+						<div class="comtainer-form">
+							<div class="botoes">
+								<button class="submit" type="submit" >Salvar
+									<i class="material-icons" >save</i></button>
+							</div>
+						</div>
+					</form>
+					<div class="botoes">
+						<button class="cancelar" onclick="listarConteudoAluno()">Cancelar
+							<i class="material-icons">close</i></button>
 					</div>
-				</ol>	
-				<div class="criarTurma">
-					<br>
-					<button class="submit" type="submit" onclick="comentar()">Comentar
+					
 				</div>
-
-				
 			</div>
-			
 		</div>
 
 			<div id="rodape">
@@ -94,3 +86,23 @@
 			</div>
 	</body>
 </html>
+
+
+
+
+<!--
+	<div id="rotina">
+		<h1>Conteúdo</h1>
+		<form method="post">
+			Nome: <input type="text" value="" name="nome"/>
+			Descricao: <input type="text" value="" name="descricao"/>
+			
+			<th:block th:include="mensagemValidacao"></th:block>
+			<div>
+				<br>
+				<button class="submit" type="submit"> Salvar Conteúdo </button>
+			</div>
+		</form>
+	</div>
+-->	
+

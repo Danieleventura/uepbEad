@@ -9,18 +9,24 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.uepb.projetoWeb.models.Comentario;
+import com.uepb.projetoWeb.models.Conteudo;
 import com.uepb.projetoWeb.models.Turma;
 import com.uepb.projetoWeb.models.TurmaAtual;
 import com.uepb.projetoWeb.models.Usuario;
+import com.uepb.projetoWeb.service.ComentarioService;
+import com.uepb.projetoWeb.service.ConteudoAtualService;
+import com.uepb.projetoWeb.service.ConteudoService;
 import com.uepb.projetoWeb.service.TurmaAtualService;
 import com.uepb.projetoWeb.service.TurmaService;
 import com.uepb.projetoWeb.service.UsuarioService;
 
 @Controller
-public class AlunoController {
+public class ComentarioController {
 	
 	@Autowired
 	private UsuarioService usuarioService;
@@ -29,8 +35,33 @@ public class AlunoController {
 	private TurmaService turmaService;
 	@Autowired
 	private TurmaAtualService turmaAtualService;
+	@Autowired
+	private ConteudoAtualService conteudoAtualService;
+	@Autowired
+	private ConteudoService conteudoService;
+	@Autowired
+	private ComentarioService comentariooService;
 	
-	@RequestMapping(value = "/alunos", method = RequestMethod.GET) //metodo para listar alunos de uma turma
+	@RequestMapping(value = "/aluno/comentar", method = RequestMethod.GET)
+	public String comentarioAluno() {
+		return "turmaAluno/formComentario";
+	}
+	
+	@RequestMapping(value = "/aluno/comentar", method = RequestMethod.POST)
+	public String comentario(@RequestParam("comentario") String co) {
+		Comentario comentario = new Comentario ();
+		Conteudo c = conteudoService.findByLasConteudo(); 
+		Usuario aluno = usuarioService.findByUser();
+		comentario.setIdConteudo(c.getId());
+		comentario.setNomeUsuario(aluno.getNome());
+		comentario.setComentario(co);
+
+		Comentario a =  comentariooService.create(comentario);
+		
+		return "redirect:/aluno/conteudo";
+	}
+	
+	/*@RequestMapping(value = "/aluno/comentar", method = RequestMethod.GET)
 	public ModelAndView turmasAluno() {
 		
 		ModelAndView mv = new ModelAndView("turma/alunos");
@@ -106,5 +137,5 @@ public class AlunoController {
 		attributes.addFlashAttribute("mensagem", "Usuario atualizado com sucesso!");
 		
 		return "redirect:/perfil/aluno";
-	}
+	}*/
 }

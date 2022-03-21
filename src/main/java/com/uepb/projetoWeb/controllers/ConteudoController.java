@@ -1,5 +1,7 @@
 package com.uepb.projetoWeb.controllers;
 
+import java.util.List;
+
 import javax.transaction.Transactional;
 import javax.validation.Valid;
 
@@ -13,9 +15,12 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.uepb.projetoWeb.domain.dto.ConteudoDTO;
+import com.uepb.projetoWeb.models.Comentario;
 import com.uepb.projetoWeb.models.Conteudo;
 import com.uepb.projetoWeb.models.ConteudoAtual;
 import com.uepb.projetoWeb.models.Turma;
+import com.uepb.projetoWeb.models.Usuario;
+import com.uepb.projetoWeb.service.ComentarioService;
 import com.uepb.projetoWeb.service.ConteudoAtualService;
 import com.uepb.projetoWeb.service.ConteudoService;
 import com.uepb.projetoWeb.service.TurmaService;
@@ -30,6 +35,8 @@ public class ConteudoController {
 	private TurmaService turmaService;
 	@Autowired
 	private ConteudoAtualService conteudoAtualService;
+	@Autowired
+	private ComentarioService comentarioService;
 	
 	@RequestMapping(value = "/cadastro/conteudo", method = RequestMethod.GET)
 	public String conteudo() {
@@ -103,9 +110,11 @@ public class ConteudoController {
 		conteudoAtual.setId(id);
 		ConteudoAtual user = conteudoAtualService.create(conteudoAtual);
 		Conteudo conteudo = conteudoService.findById(id);
+		List<Comentario> comentario = comentarioService.findByIdConteudo(conteudo.getId());
 		
 		ModelAndView mv = new ModelAndView("turmaAluno/detalheConteudo");
 		mv.addObject("conteudo", conteudo);
+		mv.addObject("comentario", comentario);
 		
 		return mv;
 		
@@ -118,9 +127,11 @@ public class ConteudoController {
 		conteudoAtual.setId(c.getId());
 		ConteudoAtual user = conteudoAtualService.create(conteudoAtual);
 		Conteudo conteudo = conteudoService.findById(c.getId());
-		
+		List<Comentario> comentario = comentarioService.findByIdConteudo(conteudo.getId());
+				
 		ModelAndView mv = new ModelAndView("turmaAluno/detalheConteudo");
 		mv.addObject("conteudo", conteudo);
+		mv.addObject("comentario", comentario);
 		
 		return mv;
 		

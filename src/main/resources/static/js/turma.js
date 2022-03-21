@@ -22,3 +22,7 @@ function listarTurmasAluno(){
 function detalheTurmaAluno(){
    window.location ="/aluno/turma";
 }
+
+function comentar(){
+   window.location ="/aluno/comentar";
+}
