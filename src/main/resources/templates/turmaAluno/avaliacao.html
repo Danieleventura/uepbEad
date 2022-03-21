@@ -5,7 +5,7 @@
 		<title>AVA - Turmas</title>
 		<meta charset="utf-8">
 		<link rel="stylesheet" th:href="@{/css/turma.css}"/>
-		<script src="/js/turma.js"></script>
+		<script src="/js/avaliacao.js"></script>
 		 <!--Import Google Icon Font-->
 		 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	</head>
@@ -33,65 +33,40 @@
 		<li class="tarefas">
 			<a href="/turmas/aluno">Turmas</a>
 		</li>
-		<li id="perfil">
-			<a href="/perfil/aluno">Perfil</a>
+		<li class="relatorios">
+			<a href="/aluno/alunos">Alunos</a>
+		</li>
+		<li class="relatorios">
+			<a href="/aluno/conteudo">Conteúdos</a>
+		</li>
+		<li class="cadastros">
+			<a href="/aluno/avaliacao">Avaliações</a>
 		</li>
 		<li id="logout">
 			<a href="/"><strong>Logout</strong></a>
 		</li>
-		
 		<li id="logout">&nbsp;&nbsp; </li>
 	</ul>
-
 	<div id="rotina">
 		<div class="container">
 			<div id="titulo">
-				<p>TURMAS</p>
+				<p>AVALIAÇÕES</p>
 			</div>
 			<div class="container-turma">
-				<ol id="horizontal" th:each="turma : ${turmas}">
+				<ol id="horizontal" th:each="avaliacao : ${avaliacoes}">
 					<div class="turmas">
 						<li>
-							<td><span th:text="${turma.nome}"></span><i class="material-icons">laptop_mac
+							<td><span th:text="${avaliacao.nome}"></span><i class="material-icons">event_available
 							</i></td>
 						</li>
-						<li class="home primeiro">
-							<td><span th:text="${turma.horario}"></span></td>
-						</li>
-						<a th:href="${(#mvc.url('TC#detalhesTurmasAluno').arg(0,turma.id)).build()}">
+						<a th:href="${(#mvc.url('AC#detalhesAvaliacaoAluno').arg(0,avaliacao.id)).build()}">
 							<button type="submit" >Abrir</button>
 						</a>
 					</div>
 				</ol>	
 			</div>
-			<div class="criarTurma">
-				<br>
-				<button class="submit" type="submit" onclick="entrarTurma()">Entrar Turma
-					<i class="material-icons">add
-					</i></button>
-			</div>
 		</div>
 	</div>
-	<!--
-		<table>
-			<thead>
-				<tr>
-					<th>Titulo</th>
-					<th>Horario</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr th:each="turma : ${turmas}">
-					<td><a th:href="${(#mvc.url('TC#detalhesTurmas').arg(0,turma.id)).build()}"><span th:text="${turma.nome}"></span></a></td>
-					<td><span th:text="${turma.horario}"></span></td>
-				</tr>
-			</tbody>
-		</table>
-		<div>
-			<br>
-			<button class="submit" type="submit" onclick="criarTurma()">Criar Turma</button>
-		</div>
-	-->
 		<div id="rodape">
 			<strong>TODOS OS DIREITOS RESERVADOS</strong><br>
 			Universidade Estadual da Paraíba - UEPB |

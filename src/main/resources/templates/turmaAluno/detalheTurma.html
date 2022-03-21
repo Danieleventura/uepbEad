@@ -17,7 +17,7 @@
 			</div>
 			<div id="titulo">
 				<strong color="#B40404">Área Restrita<br>
-				Professor<br>
+				Aluno<br>
 				</strong>
 			</div>
 		</div>
@@ -28,19 +28,19 @@
 				   &nbsp;&nbsp; 
 			</li>
 			<li class="home primeiro">
-				<a href="/professor">Home</a>
+				<a href="/aluno">Home</a>
 			</li>
 			<li class="tarefas">
-				<a href="/turmas">Turmas</a>
+				<a href="/turmas/aluno">Turmas</a>
 			</li>
 			<li class="relatorios">
-				<a href="/alunos">Alunos</a>
+				<a href="/aluno/alunos">Alunos</a>
 			</li>
 			<li class="relatorios">
-				<a href="/conteudo">Conteúdos</a>
+				<a href="/aluno/conteudo">Conteúdos</a>
 			</li>
 			<li class="cadastros">
-				<a href="/avaliacao">Avaliações</a>
+				<a href="/aluno/avaliacao">Avaliações</a>
 			</li>
 			<li id="logout">
 				<a href="/"><strong>Logout</strong></a>
@@ -56,14 +56,6 @@
 						<span th:text="${turma.horario}"></span>
 						<td>Código: <span th:text="${turma.codigo}"></span> </td>
 					</div>
-					<div id="link">
-						<a href="/turma/editar/">
-							<i class="large material-icons">edit</i>
-						</a>
-						<a href="/turma/apagar/">
-							<i class="large material-icons">delete</i>
-						</a>
-					</div>
 				</div>
 				<div id="dados">
 					<div class="container-turma">
@@ -73,7 +65,7 @@
 									<td><span>Alunos da turma</span><i class="material-icons">person
 									</i></td>
 								</li>
-								<a href="/alunos">
+								<a href="/aluno/alunos">
 									<button type="submit" >Abrir</button>
 								</a>
 							</div>
@@ -82,7 +74,7 @@
 									<td><span>Conteúdos da turma</span><i class="material-icons">book
 									</i></td>
 								</li>
-								<a href="/conteudo">
+								<a href="/aluno/conteudo">
 									<button type="submit" >Abrir</button>
 								</a>
 							</div>
@@ -91,7 +83,7 @@
 									<td><span>Avaliações da turma</span><i class="material-icons">event_available
 									</i></td>
 								</li>
-								<a href="/avaliacao">
+								<a href="/aluno/avaliacao">
 									<button type="submit" >Abrir</button>
 								</a>
 							</div>

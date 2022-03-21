@@ -18,3 +18,7 @@ function entrarTurma(){
 function listarTurmasAluno(){
    window.location ="/turmas/aluno";
 }
+
+function detalheTurmaAluno(){
+   window.location ="/aluno/turma";
+}

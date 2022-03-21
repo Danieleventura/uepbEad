@@ -97,6 +97,30 @@ public class TurmaController {
 		return mv;
 	}
 	
+	@RequestMapping(value = "aluno/turma/{id}")
+	public ModelAndView detalhesTurmasAluno(@PathVariable("id") int id) {
+		Turma turma = turmaService.findById(id);
+		TurmaAtual turmaAtual = new TurmaAtual();
+		turmaAtual.setId(turma.getId());
+		TurmaAtual user = turmaAtualService.create(turmaAtual);
+		ModelAndView mv = new ModelAndView("turmaAluno/detalheTurma");
+		mv.addObject("turma", turma);
+		
+		return mv;
+	}
+	
+	@RequestMapping(value = "/aluno/turma")
+	public ModelAndView detalheTurmasAluno() {
+		Turma turma = turmaService.findByUser();
+		TurmaAtual turmaAtual = new TurmaAtual();
+		turmaAtual.setId(turma.getId());
+		TurmaAtual user = turmaAtualService.create(turmaAtual);
+		ModelAndView mv = new ModelAndView("turmaAluno/detalheTurma");
+		mv.addObject("turma", turma);
+		
+		return mv;
+	}
+	
 	@RequestMapping(value = "/turma")
 	public ModelAndView detalheTurmas() {
 		Turma turma = turmaService.findByUser();

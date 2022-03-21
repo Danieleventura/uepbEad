@@ -11,6 +11,10 @@ function listarConteudo(){
 	   window.location ="/conteudo";
 	 }
 
+function listarConteudoAluno(){
+		window.location ="/aluno/conteudo";
+}
+
 function apagarConteudo(){
 	   window.location ="/conteudo/{id}/apagar";
 	 }

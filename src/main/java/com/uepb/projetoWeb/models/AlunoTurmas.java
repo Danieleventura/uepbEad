@@ -26,4 +26,5 @@ public class AlunoTurmas {
 	@Column
 	private String codigoTurma;
 	
+	
 }

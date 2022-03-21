@@ -61,10 +61,33 @@ public class AvaliacaoController {
 		return mv;
 	}
 	
+	@RequestMapping(value = "/aluno/avaliacao", method = RequestMethod.GET)
+	public ModelAndView avaliacaoAluno() {
+		
+		ModelAndView mv = new ModelAndView("turmaAluno/avaliacao");
+		Turma turma = turmaService.findByUser();
+		Iterable<AvaliacaoDTO> avaliacoes = avaliacaoService.findByTurma(turma.getId());
+		mv.addObject("avaliacoes", avaliacoes);
+		
+		return mv;
+	}
+	
 	@RequestMapping(value = "/avaliacao/{id}")
 	public ModelAndView detalhesAvaliacao(@PathVariable("id") int id) {
 		
 		ModelAndView mv = new ModelAndView("turma/detalheAvaliacao");
+		AvaliacaoAtual avaliacaoAtual = new AvaliacaoAtual();
+		avaliacaoAtual.setId(id);
+		AvaliacaoAtual user = avaliacaoAtualService.create(avaliacaoAtual);
+		Avaliacao avaliacao = avaliacaoService.findById(id);
+		mv.addObject("avaliacao", avaliacao);
+		
+		return mv;
+	}
+	@RequestMapping(value = "/aluno/avaliacao/{id}")
+	public ModelAndView detalhesAvaliacaoAluno(@PathVariable("id") int id) {
+		
+		ModelAndView mv = new ModelAndView("turmaAluno/detalheAvaliacao");
 		AvaliacaoAtual avaliacaoAtual = new AvaliacaoAtual();
 		avaliacaoAtual.setId(id);
 		AvaliacaoAtual user = avaliacaoAtualService.create(avaliacaoAtual);

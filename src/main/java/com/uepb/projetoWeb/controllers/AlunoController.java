@@ -41,6 +41,17 @@ public class AlunoController {
 		return mv;
 	}
 	
+	@RequestMapping(value = "aluno/alunos", method = RequestMethod.GET) //metodo para listar alunos de uma turma
+	public ModelAndView turmasAlunos() {
+		
+		ModelAndView mv = new ModelAndView("turmaAluno/alunos");
+		Turma turma = turmaService.findByUser();
+		List<Usuario> aluno = usuarioService.findCodigoTurma(turma.getCodigo());
+		mv.addObject("aluno", aluno);
+		
+		return mv;
+	}
+	
 	@RequestMapping(value = "/aluno/{id}", method = RequestMethod.GET)
 	public String aluno(@PathVariable("id") int id) {
 		Optional<Usuario> p = usuarioService.findById( id);

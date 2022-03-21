@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org"
+	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+	<head>
+		<title>AVA - Professores</title>
+		<meta charset="utf-8">
+		<link rel="stylesheet" th:href="@{/css/alunos.css}"/>
+		<script src="/js/turma.js"></script>
+		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	</head>
+
+	<body id="telaInicial">
+		<div id="cabecalho">
+			<div id="logo">
+				<img th:src="@{/imagens/logotopo.svg}" height="70px"  />
+			</div>
+			<div id="titulo">
+				<strong color="#B40404">Área Restrita<br>
+				Professor<br>
+				</strong>
+			</div>
+		</div>
+			
+	</div>
+	<ul id="horizontal">
+		<li>
+			   &nbsp;&nbsp; 
+		</li>
+		<li class="home primeiro">
+			<a href="/aluno">Home</a>
+		</li>
+		<li class="tarefas">
+			<a href="/turmas/aluno">Turmas</a>
+		</li>
+		<li class="relatorios">
+			<a href="/aluno/alunos">Alunos</a>
+		</li>
+		<li class="relatorios">
+			<a href="/aluno/conteudo">Conteúdos</a>
+		</li>
+		<li class="cadastros">
+			<a href="/aluno/avaliacao">Avaliações</a>
+		</li>
+		<li id="logout">
+			<a href="/"><strong>Logout</strong></a>
+		</li>
+		<li id="logout">&nbsp;&nbsp; </li>
+	</ul>
+
+	<div id="rotina">
+		<div class="container">
+			<div id="titulo">
+				<p>ALUNOS</p>
+			</div>
+				<ol id="horizontal" th:each="aluno : ${aluno}">
+					<div class="turmas">
+						<li>
+							<i class="material-icons">person</i>
+							<td>Matricula: <span th:text="${aluno.matricula}"></span></td>
+							<td>Nome: <span th:text="${aluno.nome}"></span></td>
+						</li>
+					</div>
+				</ol>	
+			
+		</div>
+
+		<div id="rodape">
+			<strong>TODOS OS DIREITOS RESERVADOS</strong><br>
+			Universidade Estadual da Paraíba - UEPB |
+			Equipe : 10 em Ead
+			<img th:src="@{/imagens/computer.png}" />
+		</div>
+	</body>
+</html>
